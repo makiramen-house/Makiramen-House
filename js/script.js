@@ -115,3 +115,49 @@ document.addEventListener("DOMContentLoaded", () => {
     startAutoSlide();
 
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const aboutVideo = document.getElementById("aboutVideo");
+
+    if (!aboutVideo) return;
+
+    aboutVideo.muted = true;
+    aboutVideo.setAttribute("muted", "");
+    aboutVideo.setAttribute("playsinline", "");
+    aboutVideo.setAttribute("webkit-playsinline", "");
+
+    const playVideo = () => {
+        aboutVideo.play().catch(() => {
+            // Mobile browser blocked autoplay.
+            // It will play after the user interacts with the page.
+        });
+    };
+
+    // Try immediately
+    playVideo();
+
+    // Try again when About section becomes visible
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                playVideo();
+            } else {
+                aboutVideo.pause();
+            }
+        });
+    }, {
+        threshold: 0.25
+    });
+
+    observer.observe(aboutVideo);
+
+    // Try again after user interaction
+    ["touchstart", "click", "scroll"].forEach(event => {
+        document.addEventListener(event, playVideo, {
+            once: true,
+            passive: true
+        });
+    });
+
+});

@@ -1928,3 +1928,59 @@ button {
         height: 75px;
     }
 }
+
+/* =========================
+   MOBILE NAVBAR LOGO FIX
+========================= */
+
+@media (max-width: 700px) {
+
+    .navbar {
+        width: 94%;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .logo {
+        display: flex !important;
+        align-items: center;
+        width: auto !important;
+        height: 60px !important;
+        gap: 8px;
+        flex-shrink: 0;
+        overflow: visible !important;
+    }
+
+    .logo-mark {
+        width: 42px !important;
+        height: 42px !important;
+        flex-shrink: 0;
+        overflow: hidden;
+    }
+
+    .logo-mark img {
+        width: 85px !important;
+        height: 85px !important;
+        max-width: none !important;
+        position: absolute;
+        top: -2px;
+        left: 50%;
+        transform: translateX(-50%) !important;
+    }
+
+    .logo-name {
+        display: block !important;
+        color: #fff !important;
+        font-size: 14px !important;
+        line-height: .82;
+        letter-spacing: 1px;
+        white-space: nowrap;
+    }
+
+    .nav-links {
+        gap: 12px;
+    }
+
+}
