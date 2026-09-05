@@ -21,45 +21,49 @@
 
 <body>
 
-<!-- =========================
-     NAVBAR
-========================== -->
+ <!-- =========================
+         NAVIGATION
+    ========================== -->
+    <header class="site-header">
+        <nav class="navbar">
 
-<header class="header">
+<a href="index.html" class="logo">
 
-    <nav class="navbar">
+<a href="index.html" class="logo">
+    <span class="logo-mark">
+        <img src="images/Logo.png" alt="Makiramen Logo">
+    </span>
 
-        <a href="index.html" class="logo">
+    <span class="logo-name">
+        MAKIRAMEN
+    </span>
+</a>
 
-            <span class="logo-mark">
-                <img src="images/Logo.jpg" alt="Makiramen Logo">
-            </span>
+            <div class="nav-links">
+                <a href="#home" class="active">HOME</a>
+                <a href="menu.html">MENU</a>
+                <a href="#about">ABOUT</a>
+                <a href="#gallery">GALLERY</a>
+                <a href="#location">LOCATION</a>
+            </div>
 
-            <span class="logo-name">
-                MAKIRAMEN
-            </span>
+            <a href="menu.html" class="order-btn">ORDER NOW</a>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Open menu">
+    <i class="fas fa-bars"></i>
+</button>
 
-        </a>
+        </nav>
 
-
-        <div class="nav-links">
-
-            <a href="index.html">HOME</a>
-            <a href="menu.html" class="active">MENU</a>
-            <a href="about.html">ABOUT</a>
-            <a href="gallery.html">GALLERY</a>
-            <a href="location.html">LOCATION</a>
-
-        </div>
-
-
-        <a href="menu.html" class="order-btn">
-            ORDER NOW
-        </a>
-
-    </nav>
-
-</header>
+        <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">HOME</a>
+    <a href="menu.html">MENU</a>
+    <a href="about.html">ABOUT</a>
+    <a href="gallery.html">GALLERY</a>
+    <a href="location.html">LOCATION</a>
+    <a href="menu.html" class="mobile-order-btn">ORDER NOW</a>
+</div>
+    </header>
+    
 
 
 <!-- =========================
@@ -422,58 +426,108 @@
 
 
 <!-- =========================
-     FOOTER
+     LOCATION / FOOTER
 ========================== -->
+<section id="location" class="location">
 
-<footer class="footer">
+    <div class="location-item">
+        <span class="location-icon">◷</span>
 
-    <div class="footer-logo">
-
-        <span class="footer-logo-mark">
-            <img src="images/Logo.jpg" alt="Makiramen Logo">
-        </span>
-
-        <span class="footer-logo-name">
-            MAKIRAMEN
-        </span>
-
+        <div>
+            <h3>OPENING HOURS</h3>
+            <p>Monday - Sunday</p>
+            <p>10:00 AM - 10:00 PM</p>
+        </div>
     </div>
 
+    <div class="location-item">
+        <span class="location-icon">●</span>
 
-    <p>
-        Authentic Japanese ramen made with passion
-        and the finest ingredients.
-    </p>
+        <div>
+            <h3>OUR LOCATION</h3>
+            <p>Capitol Food Park, Capitol Drive</p>
+            <p>Balanga, Bataan</p>
 
-
-    <div class="footer-social">
-
-        <a href="https://www.facebook.com/profile.php?id=100064175319282"
-           target="_blank">
-            <i class="fa-brands fa-facebook-f"></i>
-        </a>
-
-        <a href="https://www.instagram.com/makiramenhouse/"
-           target="_blank">
-            <i class="fa-brands fa-instagram"></i>
-        </a>
-
-        <a href="https://www.tiktok.com/@makiramen.house.b"
-           target="_blank">
-            <i class="fa-brands fa-tiktok"></i>
-        </a>
-
+            <a href="https://share.google/M9KjZpr33h3sfdDit"
+               target="_blank">
+               View on Google Maps →
+            </a>
+        </div>
     </div>
 
+    <div class="location-item">
+        <span class="location-icon">☎</span>
 
-    <div class="footer-bottom">
-        All Rights Reserved © 2026 Makiramen House
+        <div>
+            <h3>CONTACT US</h3>
+
+            <a class="contact-detail" href="tel:09702032663">
+                0970 203 2663
+            </a>
+
+            <a class="contact-detail"
+               href="mailto:makiramen2019@gmail.com">
+                makiramen2019@gmail.com
+            </a>
+
+            <div class="social-links">
+
+                <a href="https://www.facebook.com/profile.php?id=100064175319282"
+                   target="_blank">
+                    <span class="social-icon">f</span>
+                    Facebook
+                </a>
+
+                <a href="https://www.instagram.com/makiramenhouse/"
+                   target="_blank">
+                    <span class="social-icon">◎</span>
+                    Instagram
+                </a>
+
+                <a href="https://www.tiktok.com/@makiramen.house.b"
+                   target="_blank">
+                    <span class="social-icon">♪</span>
+                    TikTok
+                </a>
+
+            </div>
+
+        </div>
     </div>
 
-</footer>
+</section>
 
 
-<script src="js/menu.js"></script>
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+    <footer class="footer">
+
+        <a href="index.html" class="footer-logo">
+    <span class="footer-logo-mark">
+        <img src="images/Logo.png" alt="Makiramen">
+    </span>
+
+    <span class="footer-logo-name">
+        MAKIRAMEN
+    </span>
+</a>
+
+      <p class="footer-credit">
+    All Rights Reserved © 2026 Makiramen House
+</p>
+
+<p class="footer-credit">
+    Designed & Developed by <strong>Mark Darryl Lacerna</strong>
+</p>
+
+    </footer>
+
+
+    <script src="js/script.js?v=3"></script>
 
 </body>
 </html>
