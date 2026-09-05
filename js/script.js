@@ -162,3 +162,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+// Mobile menu toggle
+const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+
+if (mobileMenuToggle && mobileMenu) {
+    mobileMenuToggle.addEventListener('click', function () {
+        mobileMenu.classList.toggle('active');
+
+        const icon = this.querySelector('i');
+
+        if (mobileMenu.classList.contains('active')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+        } else {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        }
+    });
+}
