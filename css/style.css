@@ -1148,6 +1148,7 @@ button {
     display:block;
     margin-bottom:6px;
 }
+/* ===== SOCIAL MEDIA ICON COLORS ===== */
 
 .social-links{
     display:flex;
@@ -1162,19 +1163,39 @@ button {
     gap:8px;
     color:#fff;
     font-size:14px;
+    text-decoration:none;
 }
 
 .social-icon{
     width:30px;
     height:30px;
     border-radius:50%;
-    border:1px solid rgba(255,255,255,.2);
     display:flex;
     align-items:center;
     justify-content:center;
+    font-weight:700;
+    font-size:16px;
     background:#141414;
 }
 
+/* Facebook */
+.social-links a:nth-child(1) .social-icon{
+    color:#1877F2;
+    border:1px solid #1877F2;
+}
+
+/* Instagram */
+.social-links a:nth-child(2) .social-icon{
+    color:#E4405F;
+    border:1px solid #E4405F;
+}
+
+/* TikTok */
+.social-links a:nth-child(3) .social-icon{
+    color:#00F2EA;
+    border:1px solid #00F2EA;
+    text-shadow:2px 0 #FF0050;
+}
 /* Mobile */
 
 @media (max-width:768px){
