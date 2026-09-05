@@ -1,17 +1,19 @@
 /* =========================================
    MAKIRAMEN - MENU PAGE
+   FULL DESKTOP + MOBILE CSS
 ========================================= */
 
 .menu-page {
     min-height: 100vh;
+    box-sizing: border-box;
     background:
         radial-gradient(
-            circle at 50% 20%,
-            rgba(237, 28, 36, 0.08),
+            circle at 50% 15%,
+            rgba(237, 28, 36, 0.09),
             transparent 38%
         ),
         #080808;
-    padding: 85px 20px 100px;
+    padding: 85px 20px 80px;
 }
 
 .menu-section {
@@ -31,38 +33,33 @@
 
 .menu-japanese {
     display: block;
+    margin-bottom: 8px;
     color: #777;
     font-size: 12px;
     letter-spacing: 5px;
-    margin-bottom: 8px;
 }
 
 .menu-heading h1 {
     margin: 0;
-
     color: #fff;
-
     font-family: 'Anton', sans-serif;
     font-size: 42px;
     font-weight: 400;
-
+    line-height: 1.1;
     letter-spacing: 2px;
 }
 
 .menu-heading-line {
     width: 32px;
     height: 3px;
-
     margin: 12px auto;
-
     background: #ed1c24;
 }
 
 .menu-heading p {
-    margin: 0;
-
+    max-width: 600px;
+    margin: 0 auto;
     color: #999;
-
     font-size: 12px;
     line-height: 1.6;
 }
@@ -74,46 +71,50 @@
 
 .menu-tabs {
     display: flex;
-
     width: min(620px, 100%);
     margin: 0 auto 35px;
-
-    border-bottom: 1px solid rgba(255,255,255,.12);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .menu-tab {
     position: relative;
-
     flex: 1;
+    min-height: 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     border: none;
     outline: none;
-
     background: transparent;
 
     padding: 14px 10px;
 
     color: #999;
-
     font-family: 'Poppins', sans-serif;
     font-size: 10px;
     font-weight: 700;
-
-    letter-spacing: 1px;
+    letter-spacing: 1.2px;
 
     cursor: pointer;
-
-    transition: .3s ease;
+    transition:
+        color 0.25s ease,
+        background 0.25s ease,
+        transform 0.2s ease;
 }
 
 .menu-tab:hover {
     color: #fff;
 }
 
+.menu-tab:active {
+    transform: scale(0.98);
+}
+
 .menu-tab.active {
     color: #fff;
     background: #9d0000;
-
     border-radius: 7px 7px 0 0;
 }
 
@@ -124,10 +125,23 @@
 
 .menu-category {
     display: none;
+    animation: menuFadeIn 0.3s ease;
 }
 
 .menu-category.active {
     display: block;
+}
+
+@keyframes menuFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 
@@ -138,8 +152,7 @@
 .menu-list {
     display: flex;
     flex-direction: column;
-
-    gap: 5px;
+    gap: 0;
 }
 
 
@@ -151,15 +164,20 @@
     display: flex;
     align-items: center;
 
-    padding: 12px 8px;
+    width: 100%;
+    box-sizing: border-box;
 
-    border-bottom: 1px solid rgba(255,255,255,.07);
+    padding: 14px 8px;
 
-    transition: background .25s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease;
 }
 
 .menu-item:hover {
-    background: rgba(255,255,255,.025);
+    background: rgba(255, 255, 255, 0.025);
 }
 
 
@@ -176,8 +194,9 @@
     overflow: hidden;
 
     border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.12);
 
-    border: 2px solid rgba(255,255,255,.12);
+    background: #111;
 }
 
 .menu-item-image img {
@@ -188,7 +207,7 @@
 
     object-fit: cover;
 
-    transition: transform .45s ease;
+    transition: transform 0.45s ease;
 }
 
 .menu-item:hover .menu-item-image img {
@@ -201,6 +220,8 @@
 ========================================= */
 
 .menu-item-content {
+    min-width: 0;
+    flex: 1;
     padding-left: 17px;
 }
 
@@ -209,8 +230,10 @@
 
     color: #fff;
 
+    font-family: 'Poppins', sans-serif;
     font-size: 15px;
     font-weight: 600;
+    line-height: 1.3;
 }
 
 .menu-item-content p {
@@ -220,6 +243,7 @@
 
     color: #999;
 
+    font-family: 'Poppins', sans-serif;
     font-size: 11px;
     line-height: 1.5;
 }
@@ -227,12 +251,76 @@
 .menu-price {
     display: block;
 
-    margin-top: 4px;
+    margin-top: 5px;
 
     color: #ed1c24;
 
+    font-family: 'Poppins', sans-serif;
     font-size: 13px;
     font-weight: 700;
+}
+
+
+/* =========================================
+   OPTIONAL MENU BADGE
+========================================= */
+
+.menu-badge {
+    display: inline-block;
+
+    margin-left: 7px;
+    padding: 3px 7px;
+
+    color: #fff;
+    background: #ed1c24;
+
+    border-radius: 3px;
+
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    vertical-align: middle;
+}
+
+
+/* =========================================
+   FOOTER COMPATIBILITY
+========================================= */
+
+/*
+   The menu page uses the existing global
+   .footer from style.css.
+
+   These rules prevent the menu page from
+   creating unwanted horizontal overflow.
+*/
+
+.menu-page + .footer {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    overflow: hidden;
+}
+
+.menu-page + .footer * {
+    box-sizing: border-box;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+    .menu-page {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .menu-section {
+        width: min(760px, 100%);
+    }
 }
 
 
@@ -243,73 +331,168 @@
 @media (max-width: 700px) {
 
     .menu-page {
-        padding: 55px 14px 70px;
+        width: 100%;
+        min-height: 100vh;
+
+        padding: 50px 14px 55px;
+
+        overflow: hidden;
     }
+
+    .menu-section {
+        width: 100%;
+        max-width: 100%;
+    }
+
+
+    /* -------------------------
+       HEADING
+    ------------------------- */
 
     .menu-heading {
         margin-bottom: 27px;
     }
 
     .menu-japanese {
+        margin-bottom: 7px;
+
         font-size: 10px;
         letter-spacing: 4px;
     }
 
     .menu-heading h1 {
         font-size: 32px;
+        letter-spacing: 1.5px;
+    }
+
+    .menu-heading-line {
+        width: 28px;
+        height: 3px;
+
+        margin: 10px auto;
     }
 
     .menu-heading p {
+        padding: 0 8px;
+
         font-size: 10px;
+        line-height: 1.55;
     }
 
 
-    /* TABS */
+    /* -------------------------
+       TABS
+    ------------------------- */
 
     .menu-tabs {
-        margin-bottom: 22px;
+        width: 100%;
+        margin: 0 auto 22px;
+
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
     }
 
     .menu-tab {
-        padding: 12px 4px;
+        min-height: 43px;
+
+        padding: 11px 4px;
 
         font-size: 8px;
-        letter-spacing: .5px;
+        letter-spacing: 0.7px;
+
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .menu-tab.active {
+        border-radius: 6px 6px 0 0;
     }
 
 
-    /* ITEM */
+    /* -------------------------
+       MENU LIST
+    ------------------------- */
+
+    .menu-list {
+        width: 100%;
+    }
+
+
+    /* -------------------------
+       MENU ITEM
+    ------------------------- */
 
     .menu-item {
-        padding: 9px 2px;
+        width: 100%;
+
+        padding: 10px 2px;
+
+        align-items: center;
     }
+
+
+    /* -------------------------
+       IMAGE
+    ------------------------- */
 
     .menu-item-image {
         width: 62px;
         height: 62px;
+        flex: 0 0 62px;
 
-        flex-basis: 62px;
+        border-width: 2px;
     }
+
+
+    /* -------------------------
+       CONTENT
+    ------------------------- */
 
     .menu-item-content {
         padding-left: 12px;
+        padding-right: 3px;
     }
 
     .menu-item-content h2 {
         margin-bottom: 3px;
+
         font-size: 12px;
+        line-height: 1.3;
     }
 
     .menu-item-content p {
+        max-width: none;
+
         font-size: 9px;
         line-height: 1.4;
     }
 
     .menu-price {
         margin-top: 3px;
+
         font-size: 11px;
     }
 
+    .menu-badge {
+        margin-left: 4px;
+        padding: 2px 5px;
+
+        font-size: 7px;
+    }
+
+
+    /* -------------------------
+       FOOTER
+    ------------------------- */
+
+    .menu-page + .footer {
+        width: 100%;
+        max-width: 100%;
+
+        margin: 0;
+        padding-left: 18px;
+        padding-right: 18px;
+
+        overflow: hidden;
+    }
 }
 
 
@@ -320,19 +503,68 @@
 @media (max-width: 380px) {
 
     .menu-page {
-        padding-left: 10px;
-        padding-right: 10px;
+        padding: 45px 10px 45px;
+    }
+
+
+    /* -------------------------
+       HEADING
+    ------------------------- */
+
+    .menu-heading {
+        margin-bottom: 24px;
+    }
+
+    .menu-japanese {
+        font-size: 9px;
+        letter-spacing: 3px;
+    }
+
+    .menu-heading h1 {
+        font-size: 29px;
+    }
+
+    .menu-heading p {
+        padding: 0 4px;
+        font-size: 9px;
+    }
+
+
+    /* -------------------------
+       TABS
+    ------------------------- */
+
+    .menu-tabs {
+        margin-bottom: 18px;
+    }
+
+    .menu-tab {
+        min-height: 40px;
+
+        padding: 10px 2px;
+
+        font-size: 7px;
+        letter-spacing: 0.5px;
+    }
+
+
+    /* -------------------------
+       ITEM
+    ------------------------- */
+
+    .menu-item {
+        padding: 9px 0;
     }
 
     .menu-item-image {
         width: 56px;
         height: 56px;
-
-        flex-basis: 56px;
+        flex: 0 0 56px;
     }
 
     .menu-item-content {
         padding-left: 10px;
+        padding-right: 2px;
     }
 
     .menu-item-content h2 {
@@ -341,6 +573,70 @@
 
     .menu-item-content p {
         font-size: 8px;
+        line-height: 1.35;
     }
 
+    .menu-price {
+        font-size: 10px;
+    }
+
+
+    /* -------------------------
+       FOOTER
+    ------------------------- */
+
+    .menu-page + .footer {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+}
+
+
+/* =========================================
+   VERY SMALL PHONES
+========================================= */
+
+@media (max-width: 330px) {
+
+    .menu-page {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .menu-item-image {
+        width: 52px;
+        height: 52px;
+        flex-basis: 52px;
+    }
+
+    .menu-item-content {
+        padding-left: 9px;
+    }
+
+    .menu-item-content h2 {
+        font-size: 10px;
+    }
+
+    .menu-item-content p {
+        font-size: 7.5px;
+    }
+
+    .menu-price {
+        font-size: 9px;
+    }
+}
+
+
+/* =========================================
+   ACCESSIBILITY / TOUCH
+========================================= */
+
+.menu-tab:focus-visible {
+    outline: 2px solid #ed1c24;
+    outline-offset: 2px;
+}
+
+.menu-tab,
+.menu-item {
+    -webkit-tap-highlight-color: transparent;
 }
