@@ -1984,3 +1984,74 @@ button {
     }
 
 }
+
+/* =========================
+   FOOTER LOGO
+========================= */
+
+.footer-logo{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    width:max-content;
+    margin:0 auto 18px;
+    text-decoration:none;
+}
+
+.footer-logo-mark{
+    position:relative;
+    width:52px;
+    height:52px;
+    flex-shrink:0;
+    overflow:hidden;
+}
+
+.footer-logo-mark img{
+    position:absolute;
+    top:-4px;
+    left:50%;
+    width:105px;
+    height:105px;
+    max-width:none;
+    transform:translateX(-50%);
+    object-fit:contain;
+}
+
+.footer-logo-name{
+    color:#fff;
+    font-family:'Anton', sans-serif;
+    font-size:17px;
+    font-weight:700;
+    line-height:.82;
+    letter-spacing:1.5px;
+    white-space:nowrap;
+}
+
+
+/* MOBILE FOOTER LOGO */
+
+@media (max-width:700px){
+
+    .footer-logo{
+        gap:8px;
+        margin-bottom:16px;
+    }
+
+    .footer-logo-mark{
+        width:42px;
+        height:42px;
+    }
+
+    .footer-logo-mark img{
+        width:85px;
+        height:85px;
+        top:-2px;
+    }
+
+    .footer-logo-name{
+        font-size:14px;
+        letter-spacing:1px;
+    }
+
+}
