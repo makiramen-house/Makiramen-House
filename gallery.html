@@ -466,88 +466,207 @@
 <script src="js/script.js?v=3"></script>
 
 <script>
+
 const galleryImages = Array.from(
     document.querySelectorAll('.gallery-grid img')
 );
 
 const lightbox = document.getElementById('galleryLightbox');
+const track = document.getElementById('galleryTrack');
+
+const prevImage = document.getElementById('galleryPrevImage');
 const viewerImage = document.getElementById('galleryViewerImage');
+const nextImage = document.getElementById('galleryNextImage');
+
 const closeBtn = document.getElementById('galleryClose');
 const prevBtn = document.getElementById('galleryPrev');
 const nextBtn = document.getElementById('galleryNext');
 
 let currentGalleryIndex = 0;
 
+let touchStartX = 0;
+let touchCurrentX = 0;
+let isDragging = false;
+let isAnimating = false;
+
 
 /* =========================================================
-   OPEN GALLERY
+   UPDATE 3-PHOTO TRACK
+========================================================= */
+
+function updateGalleryTrack() {
+
+    if (!galleryImages.length) return;
+
+    const total = galleryImages.length;
+
+    const previousIndex =
+        (currentGalleryIndex - 1 + total) % total;
+
+    const nextIndex =
+        (currentGalleryIndex + 1) % total;
+
+
+    prevImage.src =
+        galleryImages[previousIndex].src;
+
+    prevImage.alt =
+        galleryImages[previousIndex].alt ||
+        'Makiramen Gallery';
+
+
+    viewerImage.src =
+        galleryImages[currentGalleryIndex].src;
+
+    viewerImage.alt =
+        galleryImages[currentGalleryIndex].alt ||
+        'Makiramen Gallery';
+
+
+    nextImage.src =
+        galleryImages[nextIndex].src;
+
+    nextImage.alt =
+        galleryImages[nextIndex].alt ||
+        'Makiramen Gallery';
+
+
+    /* Always return to center */
+
+    track.style.transition = 'none';
+
+    track.style.transform =
+        'translate3d(-100vw, 0, 0)';
+}
+
+
+/* =========================================================
+   OPEN
 ========================================================= */
 
 function openGallery(index) {
+
+    if (!galleryImages.length) return;
+
     currentGalleryIndex = index;
 
-    viewerImage.src = galleryImages[index].src;
-    viewerImage.alt =
-        galleryImages[index].alt || 'Makiramen Gallery';
+    isAnimating = false;
 
-    viewerImage.style.transform = 'translateX(0)';
-    viewerImage.style.transition = 'none';
+    updateGalleryTrack();
 
     lightbox.classList.add('active');
+
     document.body.classList.add('gallery-open');
 }
 
 
 /* =========================================================
-   CLOSE GALLERY
+   CLOSE
 ========================================================= */
 
 function closeGallery() {
+
     lightbox.classList.remove('active');
+
     document.body.classList.remove('gallery-open');
 
-    viewerImage.style.transform = 'translateX(0)';
+    isAnimating = false;
+
+    track.style.transition = 'none';
+
+    track.style.transform =
+        'translate3d(-100vw, 0, 0)';
 }
 
 
 /* =========================================================
-   NEXT PHOTO
+   FINISH NEXT
+========================================================= */
+
+function finishNext() {
+
+    currentGalleryIndex =
+        (currentGalleryIndex + 1) %
+        galleryImages.length;
+
+    updateGalleryTrack();
+
+    isAnimating = false;
+}
+
+
+/* =========================================================
+   FINISH PREVIOUS
+========================================================= */
+
+function finishPrevious() {
+
+    currentGalleryIndex =
+        (currentGalleryIndex - 1 +
+            galleryImages.length) %
+        galleryImages.length;
+
+    updateGalleryTrack();
+
+    isAnimating = false;
+}
+
+
+/* =========================================================
+   NEXT
 ========================================================= */
 
 function showNext() {
 
-    currentGalleryIndex =
-        (currentGalleryIndex + 1) % galleryImages.length;
+    if (
+        isAnimating ||
+        galleryImages.length <= 1
+    ) {
+        return;
+    }
 
-    viewerImage.src =
-        galleryImages[currentGalleryIndex].src;
+    isAnimating = true;
 
-    viewerImage.alt =
-        galleryImages[currentGalleryIndex].alt ||
-        'Makiramen Gallery';
+    track.style.transition =
+        'transform 0.28s cubic-bezier(.22,.61,.36,1)';
 
-    viewerImage.style.transform = 'translateX(0)';
+    track.style.transform =
+        'translate3d(-200vw, 0, 0)';
+
+    setTimeout(() => {
+
+        finishNext();
+
+    }, 280);
 }
 
 
 /* =========================================================
-   PREVIOUS PHOTO
+   PREVIOUS
 ========================================================= */
 
 function showPrevious() {
 
-    currentGalleryIndex =
-        (currentGalleryIndex - 1 + galleryImages.length) %
-        galleryImages.length;
+    if (
+        isAnimating ||
+        galleryImages.length <= 1
+    ) {
+        return;
+    }
 
-    viewerImage.src =
-        galleryImages[currentGalleryIndex].src;
+    isAnimating = true;
 
-    viewerImage.alt =
-        galleryImages[currentGalleryIndex].alt ||
-        'Makiramen Gallery';
+    track.style.transition =
+        'transform 0.28s cubic-bezier(.22,.61,.36,1)';
 
-    viewerImage.style.transform = 'translateX(0)';
+    track.style.transform =
+        'translate3d(0, 0, 0)';
+
+    setTimeout(() => {
+
+        finishPrevious();
+
+    }, 280);
 }
 
 
@@ -558,278 +677,284 @@ function showPrevious() {
 galleryImages.forEach((image, index) => {
 
     image.addEventListener('click', () => {
+
         openGallery(index);
+
     });
 
 });
 
 
 /* =========================================================
-   DESKTOP BUTTONS
+   BUTTONS
 ========================================================= */
 
-closeBtn.addEventListener('click', closeGallery);
+if (closeBtn) {
+    closeBtn.addEventListener(
+        'click',
+        closeGallery
+    );
+}
 
-nextBtn.addEventListener('click', showNext);
+if (nextBtn) {
+    nextBtn.addEventListener(
+        'click',
+        showNext
+    );
+}
 
-prevBtn.addEventListener('click', showPrevious);
+if (prevBtn) {
+    prevBtn.addEventListener(
+        'click',
+        showPrevious
+    );
+}
 
 
 /* =========================================================
-   CLOSE OUTSIDE IMAGE
+   CLICK OUTSIDE
 ========================================================= */
 
-lightbox.addEventListener('click', (e) => {
+if (lightbox) {
 
-    if (e.target === lightbox) {
-        closeGallery();
-    }
+    lightbox.addEventListener('click', (e) => {
 
-});
+        if (e.target === lightbox) {
+
+            closeGallery();
+
+        }
+
+    });
+
+}
 
 
 /* =========================================================
-   KEYBOARD CONTROLS
+   KEYBOARD
 ========================================================= */
 
 document.addEventListener('keydown', (e) => {
 
-    if (!lightbox.classList.contains('active')) {
+    if (
+        !lightbox ||
+        !lightbox.classList.contains('active')
+    ) {
         return;
     }
 
     if (e.key === 'Escape') {
+
         closeGallery();
+
+        return;
     }
 
     if (e.key === 'ArrowRight') {
+
         showNext();
+
+        return;
     }
 
     if (e.key === 'ArrowLeft') {
+
         showPrevious();
+
+        return;
     }
 
 });
 
 
 /* =========================================================
-   MOBILE FACEBOOK-STYLE DRAG SLIDER
+   MOBILE TOUCH START
 ========================================================= */
 
-let touchStartX = 0;
-let touchCurrentX = 0;
-let isDragging = false;
-let dragDirection = 0;
+if (lightbox) {
 
+    lightbox.addEventListener(
+        'touchstart',
+        (e) => {
 
-/* =========================================================
-   TOUCH START
-========================================================= */
+            if (
+                !lightbox.classList.contains('active') ||
+                isAnimating
+            ) {
+                return;
+            }
 
-lightbox.addEventListener('touchstart', (e) => {
+            touchStartX =
+                e.touches[0].clientX;
 
-    if (!lightbox.classList.contains('active')) {
-        return;
-    }
+            touchCurrentX =
+                touchStartX;
 
-    touchStartX =
-        e.changedTouches[0].screenX;
+            isDragging = true;
 
-    touchCurrentX =
-        touchStartX;
+            track.style.transition = 'none';
 
-    isDragging = true;
-    dragDirection = 0;
-
-    viewerImage.style.transition = 'none';
-
-}, { passive: true });
-
-
-/* =========================================================
-   TOUCH MOVE
-========================================================= */
-
-lightbox.addEventListener('touchmove', (e) => {
-
-    if (!isDragging) {
-        return;
-    }
-
-    touchCurrentX =
-        e.changedTouches[0].screenX;
-
-    const distance =
-        touchCurrentX - touchStartX;
-
-
-    /* ---------------------------------------------
-       Determine direction
-    --------------------------------------------- */
-
-    if (distance < 0) {
-        dragDirection = -1;
-    } else if (distance > 0) {
-        dragDirection = 1;
-    }
-
-
-    /*
-       IMPORTANT:
-       We move the whole viewer track instead of
-       only moving the current image.
-    */
-
-    const screenWidth =
-        window.innerWidth;
-
-    const percentage =
-        (distance / screenWidth) * 100;
-
-    viewerImage.style.transform =
-        `translateX(${percentage}vw)`;
-
-}, { passive: true });
-
-
-/* =========================================================
-   TOUCH END
-========================================================= */
-
-lightbox.addEventListener('touchend', () => {
-
-    if (!isDragging) {
-        return;
-    }
-
-    isDragging = false;
-
-    const distance =
-        touchCurrentX - touchStartX;
-
-    const screenWidth =
-        window.innerWidth;
-
-    const threshold =
-        screenWidth * 0.20;
+        },
+        { passive: true }
+    );
 
 
     /* =====================================================
-       SWIPE LEFT → NEXT
+       MOBILE TOUCH MOVE
     ===================================================== */
 
-    if (distance < -threshold) {
+    lightbox.addEventListener(
+        'touchmove',
+        (e) => {
 
-        viewerImage.style.transition =
-            'transform 0.22s ease';
+            if (!isDragging) {
+                return;
+            }
 
-        viewerImage.style.transform =
-            'translateX(-100vw)';
+            touchCurrentX =
+                e.touches[0].clientX;
 
-
-        setTimeout(() => {
-
-            /*
-               Change image after current image
-               completely leaves the screen.
-            */
-
-            showNext();
-
-            /*
-               Put new image on the right side.
-            */
-
-            viewerImage.style.transition = 'none';
-
-            viewerImage.style.transform =
-                'translateX(100vw)';
+            const distance =
+                touchCurrentX - touchStartX;
 
 
             /*
-               Slide new image into position.
+             CENTER = -100vw
+
+             Drag LEFT:
+             -100vw → -200vw
+
+             Drag RIGHT:
+             -100vw → 0
             */
 
-            requestAnimationFrame(() => {
+            track.style.transform =
+                `translate3d(
+                    calc(-100vw + ${distance}px),
+                    0,
+                    0
+                )`;
 
-                requestAnimationFrame(() => {
-
-                    viewerImage.style.transition =
-                        'transform 0.22s ease';
-
-                    viewerImage.style.transform =
-                        'translateX(0)';
-
-                });
-
-            });
-
-        }, 220);
-
-    }
+        },
+        { passive: true }
+    );
 
 
     /* =====================================================
-       SWIPE RIGHT → PREVIOUS
+       MOBILE TOUCH END
     ===================================================== */
 
-    else if (distance > threshold) {
+    lightbox.addEventListener(
+        'touchend',
+        () => {
 
-        viewerImage.style.transition =
-            'transform 0.22s ease';
+            if (!isDragging) {
+                return;
+            }
 
-        viewerImage.style.transform =
-            'translateX(100vw)';
+            isDragging = false;
 
+            const distance =
+                touchCurrentX - touchStartX;
 
-        setTimeout(() => {
+            const screenWidth =
+                window.innerWidth;
 
-            showPrevious();
-
-            /*
-               Put previous image on left side.
-            */
-
-            viewerImage.style.transition = 'none';
-
-            viewerImage.style.transform =
-                'translateX(-100vw)';
+            const threshold =
+                screenWidth * 0.18;
 
 
-            requestAnimationFrame(() => {
+            /* =============================================
+               SWIPE LEFT → NEXT
+            ============================================= */
 
-                requestAnimationFrame(() => {
+            if (distance < -threshold) {
 
-                    viewerImage.style.transition =
-                        'transform 0.22s ease';
+                isAnimating = true;
 
-                    viewerImage.style.transform =
-                        'translateX(0)';
+                track.style.transition =
+                    'transform 0.25s cubic-bezier(.22,.61,.36,1)';
 
-                });
+                track.style.transform =
+                    'translate3d(-200vw, 0, 0)';
 
-            });
 
-        }, 220);
+                setTimeout(() => {
 
-    }
+                    finishNext();
+
+                }, 250);
+
+                return;
+            }
+
+
+            /* =============================================
+               SWIPE RIGHT → PREVIOUS
+            ============================================= */
+
+            if (distance > threshold) {
+
+                isAnimating = true;
+
+                track.style.transition =
+                    'transform 0.25s cubic-bezier(.22,.61,.36,1)';
+
+                track.style.transform =
+                    'translate3d(0, 0, 0)';
+
+
+                setTimeout(() => {
+
+                    finishPrevious();
+
+                }, 250);
+
+                return;
+            }
+
+
+            /* =============================================
+               NOT ENOUGH DRAG
+            ============================================= */
+
+            track.style.transition =
+                'transform 0.22s cubic-bezier(.22,.61,.36,1)';
+
+            track.style.transform =
+                'translate3d(-100vw, 0, 0)';
+
+        },
+        { passive: true }
+    );
 
 
     /* =====================================================
-       NOT ENOUGH DRAG → RETURN TO CENTER
+       TOUCH CANCEL
     ===================================================== */
 
-    else {
+    lightbox.addEventListener(
+        'touchcancel',
+        () => {
 
-        viewerImage.style.transition =
-            'transform 0.22s ease';
+            if (!isDragging) {
+                return;
+            }
 
-        viewerImage.style.transform =
-            'translateX(0)';
-    }
+            isDragging = false;
 
-});
+            track.style.transition =
+                'transform 0.22s ease';
+
+            track.style.transform =
+                'translate3d(-100vw, 0, 0)';
+
+        },
+        { passive: true }
+    );
+
+}
+
 </script>
 
 </body>
