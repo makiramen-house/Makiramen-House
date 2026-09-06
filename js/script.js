@@ -163,52 +163,26 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// ===============================
-// MOBILE MENU TOGGLE
-// ===============================
-
+// Mobile menu toggle
 const mobileMenuToggle = document.getElementById('mobileMenuToggle');
 const mobileMenu = document.getElementById('mobileMenu');
 
 if (mobileMenuToggle && mobileMenu) {
+    mobileMenuToggle.addEventListener('click', function () {
+        mobileMenu.classList.toggle('active');
 
-    mobileMenuToggle.addEventListener('click', () => {
+        const icon = this.querySelector('i');
 
-        const isOpen = mobileMenu.classList.toggle('active');
-
-        mobileMenuToggle.setAttribute(
-            'aria-expanded',
-            isOpen ? 'true' : 'false'
-        );
-
+        if (mobileMenu.classList.contains('active')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+        } else {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        }
     });
-
 }
 
-
-// Close when clicking a navigation link
-if (mobileMenu) {
-
-    const mobileLinks = mobileMenu.querySelectorAll('a');
-
-    mobileLinks.forEach(link => {
-
-        link.addEventListener('click', () => {
-
-            mobileMenu.classList.remove('active');
-
-            if (mobileMenuToggle) {
-                mobileMenuToggle.setAttribute(
-                    'aria-expanded',
-                    'false'
-                );
-            }
-
-        });
-
-    });
-
-}
 // ===============================
 // MENU CATEGORY TABS
 // ===============================
