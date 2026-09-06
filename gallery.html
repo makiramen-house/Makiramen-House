@@ -477,6 +477,7 @@ const galleryImages = Array.from(
 );
 
 const lightbox = document.getElementById('galleryLightbox');
+
 const track = document.getElementById('galleryTrack');
 
 const prevImage = document.getElementById('galleryPrevImage');
@@ -492,6 +493,7 @@ let currentGalleryIndex = 0;
 let touchStartX = 0;
 let touchCurrentX = 0;
 let isDragging = false;
+
 let isAnimating = false;
 
 
@@ -533,17 +535,15 @@ function updateGalleryTrack() {
         galleryImages[nextIndex].alt || 'Makiramen Gallery';
 
 
-    /*
-     * IMPORTANT:
-     * Always return to the center slide.
-     */
     track.style.transition = 'none';
-    track.style.transform = 'translate3d(-100%, 0, 0)';
+
+    track.style.transform =
+        'translate3d(-100vw, 0, 0)';
 }
 
 
 /* =========================================================
-   OPEN
+   OPEN GALLERY
 ========================================================= */
 
 function openGallery(index) {
@@ -563,7 +563,7 @@ function openGallery(index) {
 
 
 /* =========================================================
-   CLOSE
+   CLOSE GALLERY
 ========================================================= */
 
 function closeGallery() {
@@ -575,12 +575,14 @@ function closeGallery() {
     isAnimating = false;
 
     track.style.transition = 'none';
-    track.style.transform = 'translate3d(-100%, 0, 0)';
+
+    track.style.transform =
+        'translate3d(-100vw, 0, 0)';
 }
 
 
 /* =========================================================
-   FINISH NEXT
+   FINISH NEXT SLIDE
 ========================================================= */
 
 function finishNext() {
@@ -595,7 +597,7 @@ function finishNext() {
 
 
 /* =========================================================
-   FINISH PREVIOUS
+   FINISH PREVIOUS SLIDE
 ========================================================= */
 
 function finishPrevious() {
@@ -611,7 +613,7 @@ function finishPrevious() {
 
 
 /* =========================================================
-   NEXT
+   NEXT PHOTO
 ========================================================= */
 
 function showNext() {
@@ -629,7 +631,7 @@ function showNext() {
         'transform 0.28s cubic-bezier(.22,.61,.36,1)';
 
     track.style.transform =
-        'translate3d(-200%, 0, 0)';
+        'translate3d(-200vw, 0, 0)';
 
     setTimeout(() => {
         finishNext();
@@ -638,7 +640,7 @@ function showNext() {
 
 
 /* =========================================================
-   PREVIOUS
+   PREVIOUS PHOTO
 ========================================================= */
 
 function showPrevious() {
@@ -656,7 +658,7 @@ function showPrevious() {
         'transform 0.28s cubic-bezier(.22,.61,.36,1)';
 
     track.style.transform =
-        'translate3d(0%, 0, 0)';
+        'translate3d(0vw, 0, 0)';
 
     setTimeout(() => {
         finishPrevious();
@@ -665,13 +667,15 @@ function showPrevious() {
 
 
 /* =========================================================
-   CLICK PHOTO
+   CLICK GALLERY PHOTO
 ========================================================= */
 
 galleryImages.forEach((image, index) => {
 
     image.addEventListener('click', () => {
+
         openGallery(index);
+
     });
 
 });
@@ -681,21 +685,24 @@ galleryImages.forEach((image, index) => {
    BUTTONS
 ========================================================= */
 
-if (closeBtn) {
-    closeBtn.addEventListener('click', closeGallery);
-}
+closeBtn.addEventListener(
+    'click',
+    closeGallery
+);
 
-if (nextBtn) {
-    nextBtn.addEventListener('click', showNext);
-}
+nextBtn.addEventListener(
+    'click',
+    showNext
+);
 
-if (prevBtn) {
-    prevBtn.addEventListener('click', showPrevious);
-}
+prevBtn.addEventListener(
+    'click',
+    showPrevious
+);
 
 
 /* =========================================================
-   CLICK OUTSIDE
+   CLOSE OUTSIDE VIEWER
 ========================================================= */
 
 lightbox.addEventListener('click', (e) => {
@@ -708,7 +715,7 @@ lightbox.addEventListener('click', (e) => {
 
 
 /* =========================================================
-   KEYBOARD
+   KEYBOARD CONTROLS
 ========================================================= */
 
 document.addEventListener('keydown', (e) => {
@@ -717,15 +724,18 @@ document.addEventListener('keydown', (e) => {
         return;
     }
 
+
     if (e.key === 'Escape') {
         closeGallery();
         return;
     }
 
+
     if (e.key === 'ArrowRight') {
         showNext();
         return;
     }
+
 
     if (e.key === 'ArrowLeft') {
         showPrevious();
@@ -736,7 +746,7 @@ document.addEventListener('keydown', (e) => {
 
 
 /* =========================================================
-   MOBILE TOUCH START
+   MOBILE TOUCH DRAG
 ========================================================= */
 
 lightbox.addEventListener(
@@ -751,7 +761,7 @@ lightbox.addEventListener(
         }
 
         touchStartX =
-            e.touches[0].clientX;
+            e.changedTouches[0].clientX;
 
         touchCurrentX =
             touchStartX;
@@ -766,7 +776,7 @@ lightbox.addEventListener(
 
 
 /* =========================================================
-   MOBILE TOUCH MOVE
+   TOUCH MOVE
 ========================================================= */
 
 lightbox.addEventListener(
@@ -778,7 +788,7 @@ lightbox.addEventListener(
         }
 
         touchCurrentX =
-            e.touches[0].clientX;
+            e.changedTouches[0].clientX;
 
         const distance =
             touchCurrentX - touchStartX;
@@ -786,22 +796,22 @@ lightbox.addEventListener(
         const screenWidth =
             window.innerWidth;
 
-        const percent =
+        const percentage =
             (distance / screenWidth) * 100;
 
 
         /*
-         * CENTER = -100%
+         * Current position is -100vw.
          *
-         * Swipe LEFT:
-         * -100% → -200%
+         * Drag left:
+         * -100vw → -200vw
          *
-         * Swipe RIGHT:
-         * -100% → 0%
+         * Drag right:
+         * -100vw → 0vw
          */
 
         track.style.transform =
-            `translate3d(calc(-100% + ${percent}%), 0, 0)`;
+            `translate3d(calc(-100vw + ${percentage}vw), 0, 0)`;
 
     },
     { passive: true }
@@ -809,7 +819,7 @@ lightbox.addEventListener(
 
 
 /* =========================================================
-   MOBILE TOUCH END
+   TOUCH END
 ========================================================= */
 
 lightbox.addEventListener(
@@ -822,6 +832,7 @@ lightbox.addEventListener(
 
         isDragging = false;
 
+
         const distance =
             touchCurrentX - touchStartX;
 
@@ -832,9 +843,9 @@ lightbox.addEventListener(
             screenWidth * 0.18;
 
 
-        /* ==============================
+        /* =====================================================
            SWIPE LEFT → NEXT
-        ============================== */
+        ===================================================== */
 
         if (distance < -threshold) {
 
@@ -844,19 +855,22 @@ lightbox.addEventListener(
                 'transform 0.25s cubic-bezier(.22,.61,.36,1)';
 
             track.style.transform =
-                'translate3d(-200%, 0, 0)';
+                'translate3d(-200vw, 0, 0)';
+
 
             setTimeout(() => {
+
                 finishNext();
+
             }, 250);
 
             return;
         }
 
 
-        /* ==============================
+        /* =====================================================
            SWIPE RIGHT → PREVIOUS
-        ============================== */
+        ===================================================== */
 
         if (distance > threshold) {
 
@@ -866,25 +880,28 @@ lightbox.addEventListener(
                 'transform 0.25s cubic-bezier(.22,.61,.36,1)';
 
             track.style.transform =
-                'translate3d(0%, 0, 0)';
+                'translate3d(0vw, 0, 0)';
+
 
             setTimeout(() => {
+
                 finishPrevious();
+
             }, 250);
 
             return;
         }
 
 
-        /* ==============================
-           SNAP BACK
-        ============================== */
+        /* =====================================================
+           NOT ENOUGH DRAG → SNAP BACK
+        ===================================================== */
 
         track.style.transition =
             'transform 0.22s cubic-bezier(.22,.61,.36,1)';
 
         track.style.transform =
-            'translate3d(-100%, 0, 0)';
+            'translate3d(-100vw, 0, 0)';
 
     },
     { passive: true }
@@ -909,12 +926,11 @@ lightbox.addEventListener(
             'transform 0.22s ease';
 
         track.style.transform =
-            'translate3d(-100%, 0, 0)';
+            'translate3d(-100vw, 0, 0)';
 
     },
     { passive: true }
 );
-
 </script>
 
 </body>
