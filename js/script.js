@@ -167,14 +167,18 @@ document.addEventListener("DOMContentLoaded", () => {
 // MOBILE MENU TOGGLE
 // ===============================
 
-const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-const mobileMenu = document.getElementById('mobileMenu');
+const mobileMenuToggle =
+    document.getElementById('mobileMenuToggle');
+
+const mobileMenu =
+    document.getElementById('mobileMenu');
 
 if (mobileMenuToggle && mobileMenu) {
 
     mobileMenuToggle.addEventListener('click', () => {
 
-        const isOpen = mobileMenu.classList.toggle('active');
+        const isOpen =
+            mobileMenu.classList.toggle('active');
 
         mobileMenuToggle.setAttribute(
             'aria-expanded',
@@ -183,13 +187,11 @@ if (mobileMenuToggle && mobileMenu) {
 
     });
 
-}
 
+    // Close after clicking a menu link
 
-// Close when clicking a navigation link
-if (mobileMenu) {
-
-    const mobileLinks = mobileMenu.querySelectorAll('a');
+    const mobileLinks =
+        mobileMenu.querySelectorAll('a');
 
     mobileLinks.forEach(link => {
 
@@ -197,12 +199,10 @@ if (mobileMenu) {
 
             mobileMenu.classList.remove('active');
 
-            if (mobileMenuToggle) {
-                mobileMenuToggle.setAttribute(
-                    'aria-expanded',
-                    'false'
-                );
-            }
+            mobileMenuToggle.setAttribute(
+                'aria-expanded',
+                'false'
+            );
 
         });
 
