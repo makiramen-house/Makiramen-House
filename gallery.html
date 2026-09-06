@@ -766,7 +766,6 @@ document.addEventListener('keydown', (e) => {
 
 });
 
-
 /* =========================================================
    MOBILE TOUCH START
 ========================================================= */
@@ -821,11 +820,13 @@ if (lightbox) {
             /*
              CENTER = -100vw
 
-             Drag LEFT:
+             LEFT SWIPE:
              -100vw → -200vw
+             NEXT enters from RIGHT
 
-             Drag RIGHT:
+             RIGHT SWIPE:
              -100vw → 0
+             PREVIOUS enters from LEFT
             */
 
             track.style.transform =
@@ -878,7 +879,6 @@ if (lightbox) {
                 track.style.transform =
                     'translate3d(-200vw, 0, 0)';
 
-
                 setTimeout(() => {
 
                     finishNext();
@@ -903,7 +903,6 @@ if (lightbox) {
                 track.style.transform =
                     'translate3d(0, 0, 0)';
 
-
                 setTimeout(() => {
 
                     finishPrevious();
@@ -915,7 +914,7 @@ if (lightbox) {
 
 
             /* =============================================
-               NOT ENOUGH DRAG
+               NOT ENOUGH DRAG → RETURN CENTER
             ============================================= */
 
             track.style.transition =
@@ -956,6 +955,5 @@ if (lightbox) {
 }
 
 </script>
-
 </body>
 </html>
