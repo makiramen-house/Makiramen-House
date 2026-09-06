@@ -498,6 +498,9 @@ function openGallery(index) {
     viewerImage.alt =
         galleryImages[index].alt || 'Makiramen Gallery';
 
+    viewerImage.style.transition = 'none';
+    viewerImage.style.transform = 'translateX(0)';
+
     lightbox.classList.add('active');
     document.body.classList.add('gallery-open');
 }
@@ -510,6 +513,9 @@ function openGallery(index) {
 function closeGallery() {
     lightbox.classList.remove('active');
     document.body.classList.remove('gallery-open');
+
+    viewerImage.style.transition = 'none';
+    viewerImage.style.transform = 'translateX(0)';
 }
 
 
@@ -518,6 +524,7 @@ function closeGallery() {
 ========================================================= */
 
 function showNext() {
+
     currentGalleryIndex =
         (currentGalleryIndex + 1) % galleryImages.length;
 
@@ -527,6 +534,8 @@ function showNext() {
     viewerImage.alt =
         galleryImages[currentGalleryIndex].alt ||
         'Makiramen Gallery';
+
+    viewerImage.style.transform = 'translateX(0)';
 }
 
 
@@ -535,6 +544,7 @@ function showNext() {
 ========================================================= */
 
 function showPrevious() {
+
     currentGalleryIndex =
         (currentGalleryIndex - 1 + galleryImages.length) %
         galleryImages.length;
@@ -545,6 +555,8 @@ function showPrevious() {
     viewerImage.alt =
         galleryImages[currentGalleryIndex].alt ||
         'Makiramen Gallery';
+
+    viewerImage.style.transform = 'translateX(0)';
 }
 
 
@@ -553,9 +565,11 @@ function showPrevious() {
 ========================================================= */
 
 galleryImages.forEach((image, index) => {
+
     image.addEventListener('click', () => {
         openGallery(index);
     });
+
 });
 
 
@@ -575,14 +589,16 @@ prevBtn.addEventListener('click', showPrevious);
 ========================================================= */
 
 lightbox.addEventListener('click', (e) => {
+
     if (e.target === lightbox) {
         closeGallery();
     }
+
 });
 
 
 /* =========================================================
-   KEYBOARD CONTROLS — DESKTOP
+   KEYBOARD CONTROLS
 ========================================================= */
 
 document.addEventListener('keydown', (e) => {
@@ -602,19 +618,25 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft') {
         showPrevious();
     }
+
 });
 
 
 /* =========================================================
-   MOBILE SWIPE
-   LEFT  = NEXT
-   RIGHT = PREVIOUS
+   MOBILE FACEBOOK-STYLE DRAG
 ========================================================= */
 
 let touchStartX = 0;
+let touchCurrentX = 0;
 let touchStartY = 0;
-let touchEndX = 0;
-let touchEndY = 0;
+let touchCurrentY = 0;
+
+let isDraggingGallery = false;
+
+
+/* =========================================================
+   TOUCH START
+========================================================= */
 
 lightbox.addEventListener('touchstart', (e) => {
 
@@ -623,63 +645,175 @@ lightbox.addEventListener('touchstart', (e) => {
     }
 
     touchStartX = e.changedTouches[0].screenX;
+    touchCurrentX = touchStartX;
+
     touchStartY = e.changedTouches[0].screenY;
+    touchCurrentY = touchStartY;
+
+    isDraggingGallery = true;
+
+    viewerImage.style.transition = 'none';
 
 }, { passive: true });
 
 
-lightbox.addEventListener('touchend', (e) => {
+/* =========================================================
+   TOUCH MOVE
+========================================================= */
 
-    if (!lightbox.classList.contains('active')) {
+lightbox.addEventListener('touchmove', (e) => {
+
+    if (!isDraggingGallery) {
         return;
     }
 
-    touchEndX = e.changedTouches[0].screenX;
-    touchEndY = e.changedTouches[0].screenY;
+    touchCurrentX = e.changedTouches[0].screenX;
+    touchCurrentY = e.changedTouches[0].screenY;
 
-    handleGallerySwipe();
+    const moveX = touchCurrentX - touchStartX;
+    const moveY = touchCurrentY - touchStartY;
 
-}, { passive: true });
-
-
-function handleGallerySwipe() {
-
-    const swipeDistanceX = touchEndX - touchStartX;
-    const swipeDistanceY = touchEndY - touchStartY;
 
     /*
-       Ignore vertical scrolling gestures.
-       Only activate when horizontal movement
-       is stronger than vertical movement.
+       Only drag horizontally.
+       Ignore mostly vertical gestures.
     */
 
-    if (
-        Math.abs(swipeDistanceX) <
-        Math.abs(swipeDistanceY)
-    ) {
-        return;
-    }
-
-    /* Minimum swipe distance */
-
-    if (Math.abs(swipeDistanceX) < 50) {
+    if (Math.abs(moveY) > Math.abs(moveX)) {
         return;
     }
 
 
-    /* SWIPE LEFT → NEXT */
+    /*
+       Slight resistance makes the movement
+       feel more natural.
+    */
 
-    if (swipeDistanceX < 0) {
-        showNext();
+    const resistance = 0.85;
+
+    viewerImage.style.transform =
+        `translateX(${moveX * resistance}px)`;
+
+}, { passive: true });
+
+
+/* =========================================================
+   TOUCH END
+========================================================= */
+
+lightbox.addEventListener('touchend', () => {
+
+    if (!isDraggingGallery) {
+        return;
+    }
+
+    isDraggingGallery = false;
+
+    const distance =
+        touchCurrentX - touchStartX;
+
+    const threshold =
+        window.innerWidth * 0.20;
+
+
+    /* =====================================================
+       SWIPE LEFT → NEXT
+    ===================================================== */
+
+    if (distance < -threshold) {
+
+        viewerImage.style.transition =
+            'transform 0.22s ease';
+
+        viewerImage.style.transform =
+            'translateX(-100vw)';
+
+
+        setTimeout(() => {
+
+            showNext();
+
+            viewerImage.style.transition = 'none';
+
+            viewerImage.style.transform =
+                'translateX(100vw)';
+
+
+            requestAnimationFrame(() => {
+
+                requestAnimationFrame(() => {
+
+                    viewerImage.style.transition =
+                        'transform 0.22s ease';
+
+                    viewerImage.style.transform =
+                        'translateX(0)';
+
+                });
+
+            });
+
+        }, 220);
+
     }
 
 
-    /* SWIPE RIGHT → PREVIOUS */
+    /* =====================================================
+       SWIPE RIGHT → PREVIOUS
+    ===================================================== */
+
+    else if (distance > threshold) {
+
+        viewerImage.style.transition =
+            'transform 0.22s ease';
+
+        viewerImage.style.transform =
+            'translateX(100vw)';
+
+
+        setTimeout(() => {
+
+            showPrevious();
+
+            viewerImage.style.transition = 'none';
+
+            viewerImage.style.transform =
+                'translateX(-100vw)';
+
+
+            requestAnimationFrame(() => {
+
+                requestAnimationFrame(() => {
+
+                    viewerImage.style.transition =
+                        'transform 0.22s ease';
+
+                    viewerImage.style.transform =
+                        'translateX(0)';
+
+                });
+
+            });
+
+        }, 220);
+
+    }
+
+
+    /* =====================================================
+       NOT ENOUGH DRAG → SNAP BACK
+    ===================================================== */
 
     else {
-        showPrevious();
+
+        viewerImage.style.transition =
+            'transform 0.22s ease';
+
+        viewerImage.style.transform =
+            'translateX(0)';
     }
-}
+
+});
 </script>
 
 </body>

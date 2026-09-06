@@ -406,6 +406,8 @@
         max-width: 100vw;
         max-height: 88vh;
         object-fit: contain;
+        transform: translateX(0);
+will-change: transform;
     }
 
     .gallery-close {
