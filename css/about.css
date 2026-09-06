@@ -283,13 +283,14 @@
     }
 
     .about-media {
-        width: 100%;
+        width: calc(100% + 32px);
+        margin-left: -16px;
     }
 
-     .about-media video {
+    .about-media video {
         width: 100%;
-        height: auto;
         aspect-ratio: 16 / 9;
+        height: auto;
         object-fit: cover;
     }
 
