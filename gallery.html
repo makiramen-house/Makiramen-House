@@ -486,37 +486,71 @@ const nextBtn = document.getElementById('galleryNext');
 
 let currentGalleryIndex = 0;
 
+
+/* =========================================================
+   OPEN GALLERY
+========================================================= */
+
 function openGallery(index) {
     currentGalleryIndex = index;
+
     viewerImage.src = galleryImages[index].src;
-    viewerImage.alt = galleryImages[index].alt || 'Makiramen Gallery';
+    viewerImage.alt =
+        galleryImages[index].alt || 'Makiramen Gallery';
+
     lightbox.classList.add('active');
     document.body.classList.add('gallery-open');
 }
+
+
+/* =========================================================
+   CLOSE GALLERY
+========================================================= */
 
 function closeGallery() {
     lightbox.classList.remove('active');
     document.body.classList.remove('gallery-open');
 }
 
+
+/* =========================================================
+   NEXT PHOTO
+========================================================= */
+
 function showNext() {
     currentGalleryIndex =
         (currentGalleryIndex + 1) % galleryImages.length;
 
-    viewerImage.src = galleryImages[currentGalleryIndex].src;
+    viewerImage.src =
+        galleryImages[currentGalleryIndex].src;
+
     viewerImage.alt =
-        galleryImages[currentGalleryIndex].alt || 'Makiramen Gallery';
+        galleryImages[currentGalleryIndex].alt ||
+        'Makiramen Gallery';
 }
+
+
+/* =========================================================
+   PREVIOUS PHOTO
+========================================================= */
 
 function showPrevious() {
     currentGalleryIndex =
         (currentGalleryIndex - 1 + galleryImages.length) %
         galleryImages.length;
 
-    viewerImage.src = galleryImages[currentGalleryIndex].src;
+    viewerImage.src =
+        galleryImages[currentGalleryIndex].src;
+
     viewerImage.alt =
-        galleryImages[currentGalleryIndex].alt || 'Makiramen Gallery';
+        galleryImages[currentGalleryIndex].alt ||
+        'Makiramen Gallery';
 }
+
+
+/* =========================================================
+   CLICK GALLERY PHOTO
+========================================================= */
 
 galleryImages.forEach((image, index) => {
     image.addEventListener('click', () => {
@@ -524,9 +558,21 @@ galleryImages.forEach((image, index) => {
     });
 });
 
+
+/* =========================================================
+   DESKTOP BUTTONS
+========================================================= */
+
 closeBtn.addEventListener('click', closeGallery);
+
 nextBtn.addEventListener('click', showNext);
+
 prevBtn.addEventListener('click', showPrevious);
+
+
+/* =========================================================
+   CLOSE WHEN CLICKING OUTSIDE IMAGE
+========================================================= */
 
 lightbox.addEventListener('click', (e) => {
     if (e.target === lightbox) {
@@ -534,13 +580,106 @@ lightbox.addEventListener('click', (e) => {
     }
 });
 
-document.addEventListener('keydown', (e) => {
-    if (!lightbox.classList.contains('active')) return;
 
-    if (e.key === 'Escape') closeGallery();
-    if (e.key === 'ArrowRight') showNext();
-    if (e.key === 'ArrowLeft') showPrevious();
+/* =========================================================
+   KEYBOARD CONTROLS — DESKTOP
+========================================================= */
+
+document.addEventListener('keydown', (e) => {
+
+    if (!lightbox.classList.contains('active')) {
+        return;
+    }
+
+    if (e.key === 'Escape') {
+        closeGallery();
+    }
+
+    if (e.key === 'ArrowRight') {
+        showNext();
+    }
+
+    if (e.key === 'ArrowLeft') {
+        showPrevious();
+    }
 });
+
+
+/* =========================================================
+   MOBILE SWIPE
+   LEFT  = NEXT
+   RIGHT = PREVIOUS
+========================================================= */
+
+let touchStartX = 0;
+let touchStartY = 0;
+let touchEndX = 0;
+let touchEndY = 0;
+
+lightbox.addEventListener('touchstart', (e) => {
+
+    if (!lightbox.classList.contains('active')) {
+        return;
+    }
+
+    touchStartX = e.changedTouches[0].screenX;
+    touchStartY = e.changedTouches[0].screenY;
+
+}, { passive: true });
+
+
+lightbox.addEventListener('touchend', (e) => {
+
+    if (!lightbox.classList.contains('active')) {
+        return;
+    }
+
+    touchEndX = e.changedTouches[0].screenX;
+    touchEndY = e.changedTouches[0].screenY;
+
+    handleGallerySwipe();
+
+}, { passive: true });
+
+
+function handleGallerySwipe() {
+
+    const swipeDistanceX = touchEndX - touchStartX;
+    const swipeDistanceY = touchEndY - touchStartY;
+
+    /*
+       Ignore vertical scrolling gestures.
+       Only activate when horizontal movement
+       is stronger than vertical movement.
+    */
+
+    if (
+        Math.abs(swipeDistanceX) <
+        Math.abs(swipeDistanceY)
+    ) {
+        return;
+    }
+
+    /* Minimum swipe distance */
+
+    if (Math.abs(swipeDistanceX) < 50) {
+        return;
+    }
+
+
+    /* SWIPE LEFT → NEXT */
+
+    if (swipeDistanceX < 0) {
+        showNext();
+    }
+
+
+    /* SWIPE RIGHT → PREVIOUS */
+
+    else {
+        showPrevious();
+    }
+}
 </script>
 
 </body>
