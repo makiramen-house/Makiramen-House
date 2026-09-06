@@ -1,218 +1,426 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Menu | Makiramen House</title>
 
-    <link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/style.css?v=3">
+    <link rel="stylesheet" href="css/menu.css?v=5">
 
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
+
 <body>
 
- <!-- =========================
-         NAVIGATION
-    ========================== -->
-    <header class="site-header">
-        <nav class="navbar">
 
-<a href="index.html" class="logo">
-    <span class="logo-mark">
-        <img src="images/Logo.png" alt="Makiramen Logo">
-    </span>
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
 
-    <span class="logo-name">
-        MAKIRAMEN
-    </span>
-</a>
+<header class="site-header">
 
-         <div class="nav-links">
-    <a href="index.html">HOME</a>
-    <a href="menu.html" class="active">MENU</a>
-    <a href="about.html">ABOUT</a>
-    <a href="gallery.html">GALLERY</a>
-    <a href="location.html">LOCATION</a>
-</div>
+    <nav class="navbar">
 
-            <a href="menu.html" class="order-btn">ORDER NOW</a>
-            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Open menu">
-    <i class="fas fa-bars"></i>
-</button>
+        <a href="index.html" class="logo">
 
-        </nav>
+            <span class="logo-mark">
+                <img src="images/Logo.png" alt="Makiramen Logo">
+            </span>
+
+            <span class="logo-name">
+                MAKIRAMEN
+            </span>
+
+        </a>
+
+
+        <div class="nav-links">
+
+            <a href="index.html">HOME</a>
+
+            <a href="menu.html" class="active">
+                MENU
+            </a>
+
+            <a href="about.html">ABOUT</a>
+
+            <a href="gallery.html">GALLERY</a>
+
+            <a href="location.html">LOCATION</a>
+
+        </div>
+
+
+        <a href="menu.html" class="order-btn">
+            ORDER NOW
+        </a>
+
+
+        <button
+            class="mobile-menu-toggle"
+            id="mobileMenuToggle"
+            type="button"
+            aria-label="Open menu"
+            aria-expanded="false">
+
+            <i class="fas fa-bars"></i>
+
+        </button>
+
+    </nav>
+
 
     <div class="mobile-menu" id="mobileMenu">
-    <a href="index.html">HOME</a>
-    <a href="menu.html" class="active">MENU</a>
-    <a href="about.html">ABOUT</a>
-    <a href="gallery.html">GALLERY</a>
-    <a href="location.html">LOCATION</a>
-    <a href="menu.html" class="mobile-order-btn">ORDER NOW</a>
-</div>
-    </header>
-    
+
+        <a href="index.html">HOME</a>
+
+        <a href="menu.html" class="active">
+            MENU
+        </a>
+
+        <a href="about.html">ABOUT</a>
+
+        <a href="gallery.html">GALLERY</a>
+
+        <a href="location.html">LOCATION</a>
+
+        <a href="menu.html" class="mobile-order-btn">
+            ORDER NOW
+        </a>
+
+    </div>
+
+</header>
 
 
-<!-- =========================
+
+<!-- =========================================================
      MENU PAGE
-========================== -->
+========================================================= -->
 
 <main class="menu-page">
 
-    <section class="menu-section">
 
-        <div class="menu-heading">
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <section class="menu-hero">
+
+        <div class="menu-hero-overlay"></div>
+
+        <div class="menu-hero-content">
 
             <span class="menu-japanese">
                 メニュー
             </span>
 
             <h1>
-                OUR MENU
+                OUR
+                <strong>MENU</strong>
             </h1>
 
             <div class="menu-heading-line"></div>
 
             <p>
-                Authentic Japanese flavors made fresh for every bowl.
+                Authentic Japanese flavors
+                made fresh for every bowl.
             </p>
 
         </div>
 
 
-        <!-- MENU TABS -->
+        <div class="menu-hero-image">
 
-        <div class="menu-tabs">
-
-            <button class="menu-tab active" data-category="ramen">
-                RAMEN
-            </button>
-
-          <button class="menu-tab" data-category="sushi">
-    SUSHI
-</button>
-
-            <button class="menu-tab" data-category="drinks">
-                DRINKS
-            </button>
+            <img
+                src="images/Ramen.jpg"
+                alt="Makiramen Signature Ramen">
 
         </div>
 
+    </section>
 
-        <!-- =========================
-             RAMEN
-        ========================== -->
 
-        <div class="menu-category active" id="ramen">
 
-            <div class="menu-list">
+    <!-- =====================================================
+         CATEGORY CARDS
+    ====================================================== -->
 
-                <article class="menu-item">
+    <section class="menu-categories">
 
-                    <div class="menu-item-image">
-                        <img src="images/Ramen.jpg"
-                             alt="Signature Spicy Ramen">
+        <button
+            class="category-card active"
+            data-category="ramen">
+
+            <span class="category-icon">
+                <i class="fas fa-bowl-food"></i>
+            </span>
+
+            <span class="category-text">
+                <strong>RAMEN</strong>
+                <small>ラーメン</small>
+            </span>
+
+            <span class="category-arrow">
+                →
+            </span>
+
+        </button>
+
+
+        <button
+            class="category-card"
+            data-category="sushi">
+
+            <span class="category-icon">
+                <i class="fas fa-fish"></i>
+            </span>
+
+            <span class="category-text">
+                <strong>SUSHI</strong>
+                <small>寿司</small>
+            </span>
+
+            <span class="category-arrow">
+                →
+            </span>
+
+        </button>
+
+
+        <button
+            class="category-card"
+            data-category="drinks">
+
+            <span class="category-icon">
+                <i class="fas fa-glass-water"></i>
+            </span>
+
+            <span class="category-text">
+                <strong>DRINKS</strong>
+                <small>ドリンク</small>
+            </span>
+
+            <span class="category-arrow">
+                →
+            </span>
+
+        </button>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         MENU CONTENT
+    ====================================================== -->
+
+    <section class="menu-content">
+
+
+        <!-- ================= RAMEN ================= -->
+
+        <div
+            class="menu-category active"
+            id="ramen">
+
+            <div class="menu-section-heading">
+
+                <div>
+
+                    <span>
+                        RAMEN SELECTION
+                    </span>
+
+                    <h2>
+                        RAMEN
+                    </h2>
+
+                    <p>
+                        RICH FLAVORS. DEEP TRADITIONS.
+                    </p>
+
+                </div>
+
+
+                <div class="menu-section-description">
+
+                    Our ramen bowls are crafted with
+                    rich broths, premium ingredients,
+                    and authentic Japanese taste.
+
+                </div>
+
+            </div>
+
+
+            <div class="menu-grid">
+
+
+                <!-- 01 -->
+
+                <article class="menu-card featured">
+
+                    <div class="menu-card-image">
+
+                        <img
+                            src="images/Ramen.jpg"
+                            alt="Signature Spicy Ramen">
+
+                        <span class="best-seller">
+                            BEST SELLER
+                        </span>
+
                     </div>
 
-                    <div class="menu-item-content">
 
-                        <h2>
+                    <div class="menu-card-body">
+
+                        <h3>
                             Signature Spicy Ramen
-                        </h2>
+                        </h3>
 
                         <p>
-                            Rich and spicy broth, chashu, ajitama,
-                            corn, bamboo shoots, and nori.
+                            Rich and spicy broth, chashu,
+                            ajitama, corn, bamboo shoots,
+                            and nori.
                         </p>
 
-                        <span class="menu-price">
-                            ₱280
-                        </span>
+
+                        <div class="menu-card-bottom">
+
+                            <strong>
+                                ₱280
+                            </strong>
+
+                            <span class="menu-plus">
+                                +
+                            </span>
+
+                        </div>
 
                     </div>
 
                 </article>
 
 
-                <article class="menu-item">
 
-                    <div class="menu-item-image">
-                        <img src="images/Ramen2.jpg"
-                             alt="Tonkotsu Ramen">
+                <!-- 02 -->
+
+                <article class="menu-card">
+
+                    <div class="menu-card-image">
+
+                        <img
+                            src="images/Ramen2.jpg"
+                            alt="Tonkotsu Ramen">
+
                     </div>
 
-                    <div class="menu-item-content">
 
-                        <h2>
+                    <div class="menu-card-body">
+
+                        <h3>
                             Tonkotsu Ramen
-                        </h2>
+                        </h3>
 
                         <p>
-                            Creamy pork bone broth, chashu,
-                            ajitama, kikurage, green onions,
-                            and nori.
+                            Creamy pork bone broth,
+                            chashu, ajitama, kikurage,
+                            green onions, and nori.
                         </p>
 
-                        <span class="menu-price">
-                            ₱270
-                        </span>
+
+                        <div class="menu-card-bottom">
+
+                            <strong>
+                                ₱270
+                            </strong>
+
+                            <span class="menu-plus">
+                                +
+                            </span>
+
+                        </div>
 
                     </div>
 
                 </article>
 
 
-                <article class="menu-item">
 
-                    <div class="menu-item-image">
-                        <img src="images/Ramen3.jpg"
-                             alt="Shoyu Ramen">
+                <!-- 03 -->
+
+                <article class="menu-card">
+
+                    <div class="menu-card-image">
+
+                        <img
+                            src="images/Ramen3.jpg"
+                            alt="Shoyu Ramen">
+
                     </div>
 
-                    <div class="menu-item-content">
 
-                        <h2>
+                    <div class="menu-card-body">
+
+                        <h3>
                             Shoyu Ramen
-                        </h2>
+                        </h3>
 
                         <p>
-                            Soy sauce based broth, chashu,
-                            ajitama, menma, green onions,
-                            and nori.
+                            Soy sauce based broth,
+                            chashu, ajitama, menma,
+                            green onions, and nori.
                         </p>
 
-                        <span class="menu-price">
-                            ₱260
-                        </span>
+
+                        <div class="menu-card-bottom">
+
+                            <strong>
+                                ₱260
+                            </strong>
+
+                            <span class="menu-plus">
+                                +
+                            </span>
+
+                        </div>
 
                     </div>
 
                 </article>
 
 
-                <article class="menu-item">
 
-                    <div class="menu-item-image">
-                        <img src="images/Ramen4.jpg"
-                             alt="Miso Ramen">
+                <!-- 04 -->
+
+                <article class="menu-card">
+
+                    <div class="menu-card-image">
+
+                        <img
+                            src="images/Ramen4.jpg"
+                            alt="Miso Ramen">
+
                     </div>
 
-                    <div class="menu-item-content">
 
-                        <h2>
+                    <div class="menu-card-body">
+
+                        <h3>
                             Miso Ramen
-                        </h2>
+                        </h3>
 
                         <p>
                             Savory miso broth, chashu,
@@ -220,235 +428,371 @@
                             and nori.
                         </p>
 
-                        <span class="menu-price">
-                            ₱270
-                        </span>
+
+                        <div class="menu-card-bottom">
+
+                            <strong>
+                                ₱270
+                            </strong>
+
+                            <span class="menu-plus">
+                                +
+                            </span>
+
+                        </div>
 
                     </div>
 
                 </article>
 
 
-                <article class="menu-item">
 
-                    <div class="menu-item-image">
-                        <img src="images/Ramen5.jpg"
-                             alt="Classic Ramen">
+                <!-- 05 -->
+
+                <article class="menu-card">
+
+                    <div class="menu-card-image">
+
+                        <img
+                            src="images/Ramen5.jpg"
+                            alt="Classic Ramen">
+
                     </div>
 
-                    <div class="menu-item-content">
 
-                        <h2>
+                    <div class="menu-card-body">
+
+                        <h3>
                             Classic Ramen
-                        </h2>
+                        </h3>
 
                         <p>
-                            Comforting Japanese ramen with
-                            flavorful broth and fresh toppings.
+                            Comforting Japanese ramen
+                            with flavorful broth and
+                            fresh toppings.
                         </p>
 
-                        <span class="menu-price">
-                            ₱260
-                        </span>
+
+                        <div class="menu-card-bottom">
+
+                            <strong>
+                                ₱260
+                            </strong>
+
+                            <span class="menu-plus">
+                                +
+                            </span>
+
+                        </div>
 
                     </div>
 
                 </article>
+
 
             </div>
 
         </div>
 
 
-        <!-- =========================
-             SIDE DISH
-        ========================== -->
 
-        <div class="menu-category" id="sushi">
+        <!-- ================= SUSHI ================= -->
 
-            <div class="menu-list">
+        <div
+            class="menu-category"
+            id="sushi">
 
-                <article class="menu-item">
+            <div class="menu-section-heading">
 
-                    <div class="menu-item-image">
-                        <img src="images/Sushi.jpg"
-                             alt="Sushi">
+                <div>
+
+                    <span>
+                        SUSHI SELECTION
+                    </span>
+
+                    <h2>
+                        SUSHI
+                    </h2>
+
+                    <p>
+                        FRESH. DELICATE. AUTHENTIC.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="menu-grid">
+
+
+                <article class="menu-card">
+
+                    <div class="menu-card-image">
+
+                        <img
+                            src="images/Sushi.jpg"
+                            alt="Signature Sushi">
+
                     </div>
 
-                    <div class="menu-item-content">
 
-                        <h2>
+                    <div class="menu-card-body">
+
+                        <h3>
                             Signature Sushi
-                        </h2>
+                        </h3>
 
                         <p>
-                            Freshly prepared sushi rolls with
-                            premium Japanese ingredients.
+                            Freshly prepared sushi rolls
+                            with premium Japanese
+                            ingredients.
                         </p>
 
-                        <span class="menu-price">
-                            ₱220
-                        </span>
+
+                        <div class="menu-card-bottom">
+
+                            <strong>
+                                ₱220
+                            </strong>
+
+                            <span class="menu-plus">
+                                +
+                            </span>
+
+                        </div>
 
                     </div>
 
                 </article>
 
 
-                <article class="menu-item">
 
-                    <div class="menu-item-image">
-                        <img src="images/Sushi2.jpg"
-                             alt="Sushi Rolls">
+                <article class="menu-card">
+
+                    <div class="menu-card-image">
+
+                        <img
+                            src="images/Sushi2.jpg"
+                            alt="Special Sushi Rolls">
+
                     </div>
 
-                    <div class="menu-item-content">
 
-                        <h2>
+                    <div class="menu-card-body">
+
+                        <h3>
                             Special Sushi Rolls
-                        </h2>
+                        </h3>
 
                         <p>
-                            Crispy and flavorful sushi rolls
-                            prepared fresh to order.
+                            Crispy and flavorful sushi
+                            rolls prepared fresh to order.
                         </p>
 
-                        <span class="menu-price">
-                            ₱240
-                        </span>
+
+                        <div class="menu-card-bottom">
+
+                            <strong>
+                                ₱240
+                            </strong>
+
+                            <span class="menu-plus">
+                                +
+                            </span>
+
+                        </div>
 
                     </div>
 
                 </article>
 
-
-                <article class="menu-item">
-
-                    <div class="menu-item-image">
-                        <img src="images/Meal.jpg"
-                             alt="Japanese Meal">
-                    </div>
-
-                    <div class="menu-item-content">
-
-                        <h2>
-                            Japanese Meal
-                        </h2>
-
-                        <p>
-                            A satisfying Japanese-style meal
-                            perfect for lunch or dinner.
-                        </p>
-
-                        <span class="menu-price">
-                            ₱250
-                        </span>
-
-                    </div>
-
-                </article>
-
-
-                <article class="menu-item">
-
-                    <div class="menu-item-image">
-                        <img src="images/Meal1.jpg"
-                             alt="Japanese Side Dish">
-                    </div>
-
-                    <div class="menu-item-content">
-
-                        <h2>
-                            Japanese Side Dish
-                        </h2>
-
-                        <p>
-                            Delicious side dishes made to
-                            complement your ramen.
-                        </p>
-
-                        <span class="menu-price">
-                            ₱180
-                        </span>
-
-                    </div>
-
-                </article>
 
             </div>
 
         </div>
 
 
-        <!-- =========================
-             DRINKS
-        ========================== -->
 
-        <div class="menu-category" id="drinks">
+        <!-- ================= DRINKS ================= -->
 
-            <div class="menu-list">
+        <div
+            class="menu-category"
+            id="drinks">
 
-                <article class="menu-item">
+            <div class="menu-section-heading">
 
-                    <div class="menu-item-image">
-                        <img src="images/Meal2.jpg"
-                             alt="Japanese Drink">
+                <div>
+
+                    <span>
+                        DRINKS SELECTION
+                    </span>
+
+                    <h2>
+                        DRINKS
+                    </h2>
+
+                    <p>
+                        REFRESHING. SIMPLE. PERFECT.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="menu-grid">
+
+
+                <article class="menu-card">
+
+                    <div class="menu-card-image">
+
+                        <img
+                            src="images/Meal2.jpg"
+                            alt="House Special">
+
                     </div>
 
-                    <div class="menu-item-content">
 
-                        <h2>
+                    <div class="menu-card-body">
+
+                        <h3>
                             House Special
-                        </h2>
+                        </h3>
 
                         <p>
-                            A refreshing drink to pair with
-                            your favorite ramen.
+                            A refreshing drink to pair
+                            with your favorite ramen.
                         </p>
 
-                        <span class="menu-price">
-                            ₱120
-                        </span>
+
+                        <div class="menu-card-bottom">
+
+                            <strong>
+                                ₱120
+                            </strong>
+
+                            <span class="menu-plus">
+                                +
+                            </span>
+
+                        </div>
 
                     </div>
 
                 </article>
 
+
             </div>
 
         </div>
+
 
     </section>
 
 </main>
 
-    <!-- =========================
-         FOOTER
-    ========================== -->
-    <footer class="footer">
-
-        <a href="index.html" class="footer-logo">
-    <span class="footer-logo-mark">
-        <img src="images/Logo.png" alt="Makiramen">
-    </span>
-
-    <span class="footer-logo-name">
-        MAKIRAMEN
-    </span>
-</a>
-
-      <p class="footer-credit">
-    All Rights Reserved © 2026 Makiramen House
-</p>
-
-<p class="footer-credit">
-    Designed & Developed by <strong>Mark Darryl Lacerna</strong>
-</p>
-
-    </footer>
 
 
-    <script src="js/script.js?v=3"></script>
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="footer">
+
+    <a href="index.html" class="footer-logo">
+
+        <span class="footer-logo-mark">
+
+            <img
+                src="images/Logo.png"
+                alt="Makiramen">
+
+        </span>
+
+        <span class="footer-logo-name">
+            MAKIRAMEN
+        </span>
+
+    </a>
+
+
+    <p class="footer-credit">
+        All Rights Reserved © 2026 Makiramen House
+    </p>
+
+
+    <p class="footer-credit">
+        Designed & Developed by
+        <strong>
+            Mark Darryl Lacerna
+        </strong>
+    </p>
+
+</footer>
+
+
+
+<script src="js/script.js?v=3"></script>
+
+
+<script>
+
+/* =========================================================
+   MENU CATEGORY SWITCHER
+========================================================= */
+
+const categoryButtons =
+    document.querySelectorAll('.category-card');
+
+const menuCategories =
+    document.querySelectorAll('.menu-category');
+
+
+categoryButtons.forEach(button => {
+
+    button.addEventListener('click', () => {
+
+        const category =
+            button.dataset.category;
+
+
+        /* Active button */
+
+        categoryButtons.forEach(item => {
+
+            item.classList.remove('active');
+
+        });
+
+        button.classList.add('active');
+
+
+        /* Show category */
+
+        menuCategories.forEach(section => {
+
+            section.classList.remove('active');
+
+        });
+
+
+        const selected =
+            document.getElementById(category);
+
+        if (selected) {
+
+            selected.classList.add('active');
+
+        }
+
+    });
+
+});
+
+</script>
+
 
 </body>
 </html>

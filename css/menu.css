@@ -1,205 +1,517 @@
-/* =========================================
-   MAKIRAMEN - MENU PAGE
-   FULL DESKTOP + MOBILE CSS
-========================================= */
+/* =========================================================
+   MAKIRAMEN HOUSE
+   PREMIUM MENU PAGE
+========================================================= */
+
+:root {
+    --menu-red: #ed1c24;
+    --menu-dark: #070707;
+    --menu-card: #101010;
+    --menu-border: rgba(255,255,255,.12);
+    --menu-muted: #999;
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
 
 .menu-page {
     min-height: 100vh;
-    box-sizing: border-box;
     background:
         radial-gradient(
-            circle at 50% 15%,
-            rgba(237, 28, 36, 0.09),
+            circle at 50% 0%,
+            rgba(120,0,0,.20),
             transparent 38%
         ),
-        #080808;
-    padding: 85px 20px 80px;
-}
+        #070707;
 
-.menu-section {
-    width: min(900px, 100%);
-    margin: 0 auto;
-}
-
-
-/* =========================================
-   HEADING
-========================================= */
-
-.menu-heading {
-    text-align: center;
-    margin-bottom: 35px;
-}
-
-.menu-japanese {
-    display: block;
-    margin-bottom: 8px;
-    color: #777;
-    font-size: 12px;
-    letter-spacing: 5px;
-}
-
-.menu-heading h1 {
-    margin: 0;
     color: #fff;
-    font-family: 'Anton', sans-serif;
-    font-size: 42px;
-    font-weight: 400;
-    line-height: 1.1;
-    letter-spacing: 2px;
-}
-
-.menu-heading-line {
-    width: 32px;
-    height: 3px;
-    margin: 12px auto;
-    background: #ed1c24;
-}
-
-.menu-heading p {
-    max-width: 600px;
-    margin: 0 auto;
-    color: #999;
-    font-size: 12px;
-    line-height: 1.6;
 }
 
 
-/* =========================================
-   MENU TABS
-========================================= */
+/* =========================================================
+   HERO
+========================================================= */
 
-.menu-tabs {
-    display: flex;
-    width: min(620px, 100%);
-    margin: 0 auto 35px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.menu-tab {
+.menu-hero {
     position: relative;
-    flex: 1;
-    min-height: 46px;
+
+    min-height: 370px;
+
+    overflow: hidden;
 
     display: flex;
     align-items: center;
-    justify-content: center;
 
-    border: none;
-    outline: none;
-    background: transparent;
+    border-bottom: 1px solid var(--menu-border);
+}
 
-    padding: 14px 10px;
 
-    color: #999;
-    font-family: 'Poppins', sans-serif;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1.2px;
+.menu-hero-image {
+    position: absolute;
+
+    right: 0;
+    top: 0;
+
+    width: 63%;
+    height: 100%;
+
+    overflow: hidden;
+}
+
+
+.menu-hero-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    filter: saturate(1.08);
+}
+
+
+.menu-hero-image::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            #070707 0%,
+            rgba(7,7,7,.92) 15%,
+            rgba(7,7,7,.45) 48%,
+            rgba(7,7,7,.15) 100%
+        );
+}
+
+
+.menu-hero-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(237,28,36,.12),
+            transparent 35%
+        );
+
+    pointer-events: none;
+
+    z-index: 2;
+}
+
+
+.menu-hero-content {
+    position: relative;
+
+    z-index: 3;
+
+    width: min(1200px, 90%);
+
+    margin: auto;
+
+    padding: 55px 0;
+}
+
+
+.menu-japanese {
+    display: block;
+
+    margin-bottom: 12px;
+
+    color: var(--menu-red);
+
+    font-size: 18px;
+
+    letter-spacing: 5px;
+}
+
+
+.menu-hero h1 {
+    margin: 0;
+
+    font-family: 'Anton', sans-serif;
+
+    font-size: clamp(65px, 8vw, 105px);
+
+    font-weight: 400;
+
+    line-height: .88;
+
+    letter-spacing: 2px;
+}
+
+
+.menu-hero h1 strong {
+    color: var(--menu-red);
+
+    font-weight: 400;
+}
+
+
+.menu-heading-line {
+    width: 65px;
+    height: 3px;
+
+    margin: 25px 0 20px;
+
+    background: var(--menu-red);
+}
+
+
+.menu-hero p {
+    max-width: 430px;
+
+    margin: 0;
+
+    color: #d0d0d0;
+
+    font-size: 16px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   CATEGORY CARDS
+========================================================= */
+
+.menu-categories {
+    width: min(1200px, 90%);
+
+    margin: -1px auto 0;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 18px;
+
+    position: relative;
+
+    z-index: 5;
+}
+
+
+.category-card {
+    position: relative;
+
+    min-height: 108px;
+
+    padding: 20px 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    border: 1px solid var(--menu-border);
+
+    background:
+        linear-gradient(
+            135deg,
+            #111,
+            #0b0b0b
+        );
+
+    color: #fff;
 
     cursor: pointer;
+
+    text-align: left;
+
     transition:
-        color 0.25s ease,
-        background 0.25s ease,
-        transform 0.2s ease;
-}
+        .3s ease;
 
-.menu-tab:hover {
-    color: #fff;
-}
-
-.menu-tab:active {
-    transform: scale(0.98);
-}
-
-.menu-tab.active {
-    color: #fff;
-    background: #9d0000;
-    border-radius: 7px 7px 0 0;
+    overflow: hidden;
 }
 
 
-/* =========================================
-   CATEGORY
-========================================= */
+.category-card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 160px;
+    height: 160px;
+
+    right: -60px;
+    bottom: -90px;
+
+    background: rgba(255,255,255,.025);
+
+    transform: rotate(25deg);
+
+    transition: .3s ease;
+}
+
+
+.category-card:hover {
+    border-color: rgba(237,28,36,.6);
+
+    transform: translateY(-3px);
+}
+
+
+.category-card.active {
+    background:
+        linear-gradient(
+            135deg,
+            #d40000,
+            #8d0000
+        );
+
+    border-color: var(--menu-red);
+}
+
+
+.category-icon {
+    width: 55px;
+    height: 55px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(255,255,255,.35);
+
+    font-size: 25px;
+}
+
+
+.category-text {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+
+.category-text strong {
+    font-size: 17px;
+
+    letter-spacing: 1.5px;
+}
+
+
+.category-text small {
+    color: #aaa;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+}
+
+
+.category-card.active
+.category-text small {
+    color: #eee;
+}
+
+
+.category-arrow {
+    margin-left: auto;
+
+    font-size: 22px;
+
+    opacity: .65;
+
+    transition: .25s ease;
+}
+
+
+.category-card:hover .category-arrow {
+    transform: translateX(5px);
+
+    opacity: 1;
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.menu-content {
+    width: min(1200px, 90%);
+
+    margin: auto;
+
+    padding: 65px 0 100px;
+}
+
 
 .menu-category {
     display: none;
-    animation: menuFadeIn 0.3s ease;
+
+    animation: menuFade .35s ease;
 }
+
 
 .menu-category.active {
     display: block;
 }
 
-@keyframes menuFadeIn {
+
+@keyframes menuFade {
+
     from {
         opacity: 0;
-        transform: translateY(6px);
+        transform: translateY(12px);
     }
 
     to {
         opacity: 1;
         transform: translateY(0);
     }
+
 }
 
 
-/* =========================================
-   MENU LIST
-========================================= */
+/* =========================================================
+   SECTION HEADING
+========================================================= */
 
-.menu-list {
+.menu-section-heading {
     display: flex;
-    flex-direction: column;
-    gap: 0;
+
+    justify-content: space-between;
+
+    align-items: flex-end;
+
+    gap: 40px;
+
+    margin-bottom: 35px;
 }
 
 
-/* =========================================
-   MENU ITEM
-========================================= */
+.menu-section-heading > div:first-child > span {
+    display: block;
 
-.menu-item {
-    display: flex;
-    align-items: center;
+    margin-bottom: 8px;
 
-    width: 100%;
-    box-sizing: border-box;
+    color: var(--menu-red);
 
-    padding: 14px 8px;
+    font-size: 12px;
 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    font-weight: 800;
 
-    transition:
-        background 0.25s ease,
-        transform 0.25s ease;
-}
-
-.menu-item:hover {
-    background: rgba(255, 255, 255, 0.025);
+    letter-spacing: 3px;
 }
 
 
-/* =========================================
-   FOOD IMAGE
-========================================= */
+.menu-section-heading h2 {
+    margin: 0;
 
-.menu-item-image {
-    width: 82px;
-    height: 82px;
+    font-family: 'Anton', sans-serif;
 
-    flex: 0 0 82px;
+    font-size: 58px;
+
+    font-weight: 400;
+
+    line-height: .9;
+
+    letter-spacing: 2px;
+}
+
+
+.menu-section-heading p {
+    margin: 10px 0 0;
+
+    color: #777;
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+}
+
+
+.menu-section-description {
+    max-width: 350px;
+
+    padding-right: 20px;
+
+    border-right: 3px solid var(--menu-red);
+
+    color: #999;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+    text-align: right;
+}
+
+
+/* =========================================================
+   FOOD GRID
+========================================================= */
+
+.menu-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, minmax(0, 1fr));
+
+    gap: 18px;
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.menu-card {
+    position: relative;
 
     overflow: hidden;
 
-    border-radius: 50%;
-    border: 2px solid rgba(255, 255, 255, 0.12);
+    background: var(--menu-card);
 
-    background: #111;
+    border: 1px solid var(--menu-border);
+
+    border-radius: 7px;
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
 }
 
-.menu-item-image img {
+
+.menu-card:hover {
+    transform: translateY(-7px);
+
+    border-color: rgba(237,28,36,.55);
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.45);
+}
+
+
+.menu-card-image {
+    position: relative;
+
+    height: 185px;
+
+    overflow: hidden;
+}
+
+
+.menu-card-image img {
     display: block;
 
     width: 100%;
@@ -207,436 +519,383 @@
 
     object-fit: cover;
 
-    transition: transform 0.45s ease;
-}
-
-.menu-item:hover .menu-item-image img {
-    transform: scale(1.08);
+    transition: transform .5s ease;
 }
 
 
-/* =========================================
-   CONTENT
-========================================= */
-
-.menu-item-content {
-    min-width: 0;
-    flex: 1;
-    padding-left: 17px;
+.menu-card:hover
+.menu-card-image img {
+    transform: scale(1.07);
 }
 
-.menu-item-content h2 {
-    margin: 0 0 5px;
+
+.menu-card-image::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent 55%,
+            rgba(0,0,0,.55)
+        );
+}
+
+
+.best-seller {
+    position: absolute;
+
+    top: 12px;
+    right: 12px;
+
+    z-index: 2;
+
+    padding: 7px 9px;
+
+    background: var(--menu-red);
 
     color: #fff;
 
-    font-family: 'Poppins', sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-    line-height: 1.3;
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: .5px;
 }
 
-.menu-item-content p {
-    max-width: 560px;
+
+.menu-card-body {
+    padding: 17px 14px 15px;
+}
+
+
+.menu-card-body h3 {
+    margin: 0 0 9px;
+
+    color: #fff;
+
+    font-size: 16px;
+
+    line-height: 1.2;
+}
+
+
+.menu-card-body p {
+    min-height: 58px;
 
     margin: 0;
 
     color: #999;
 
-    font-family: 'Poppins', sans-serif;
-    font-size: 11px;
-    line-height: 1.5;
-}
+    font-size: 10px;
 
-.menu-price {
-    display: block;
-
-    margin-top: 5px;
-
-    color: #ed1c24;
-
-    font-family: 'Poppins', sans-serif;
-    font-size: 13px;
-    font-weight: 700;
+    line-height: 1.55;
 }
 
 
-/* =========================================
-   OPTIONAL MENU BADGE
-========================================= */
+.menu-card-bottom {
+    display: flex;
 
-.menu-badge {
-    display: inline-block;
+    align-items: center;
 
-    margin-left: 7px;
-    padding: 3px 7px;
+    justify-content: space-between;
+
+    margin-top: 17px;
+}
+
+
+.menu-card-bottom strong {
+    color: var(--menu-red);
+
+    font-size: 17px;
+}
+
+
+.menu-plus {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid var(--menu-red);
+
+    border-radius: 50%;
 
     color: #fff;
-    background: #ed1c24;
 
-    border-radius: 3px;
+    font-size: 22px;
 
-    font-size: 8px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    vertical-align: middle;
+    transition: .25s ease;
 }
 
 
-/* =========================================
-   FOOTER COMPATIBILITY
-========================================= */
+.menu-card:hover .menu-plus {
+    background: var(--menu-red);
 
-/*
-   The menu page uses the existing global
-   .footer from style.css.
-
-   These rules prevent the menu page from
-   creating unwanted horizontal overflow.
-*/
-
-.menu-page + .footer {
-    width: 100%;
-    box-sizing: border-box;
-    margin: 0;
-    overflow: hidden;
-}
-
-.menu-page + .footer * {
-    box-sizing: border-box;
+    transform: rotate(90deg);
 }
 
 
-/* =========================================
+/* =========================================================
    TABLET
-========================================= */
+========================================================= */
 
-@media (max-width: 900px) {
+@media (max-width: 1050px) {
 
-    .menu-page {
-        padding-left: 18px;
-        padding-right: 18px;
+    .menu-grid {
+        grid-template-columns:
+            repeat(3, 1fr);
     }
 
-    .menu-section {
-        width: min(760px, 100%);
+    .menu-card-image {
+        height: 200px;
     }
+
 }
 
 
-/* =========================================
+/* =========================================================
    MOBILE
-========================================= */
+========================================================= */
 
 @media (max-width: 700px) {
 
-    .menu-page {
+    .menu-hero {
+        min-height: 470px;
+
+        align-items: flex-end;
+    }
+
+
+    .menu-hero-image {
         width: 100%;
-        min-height: 100vh;
-
-        padding: 50px 14px 55px;
-
-        overflow: hidden;
-    }
-
-    .menu-section {
-        width: 100%;
-        max-width: 100%;
+        height: 100%;
     }
 
 
-    /* -------------------------
-       HEADING
-    ------------------------- */
-
-    .menu-heading {
-        margin-bottom: 27px;
+    .menu-hero-image::after {
+        background:
+            linear-gradient(
+                to bottom,
+                rgba(7,7,7,.1),
+                rgba(7,7,7,.45) 35%,
+                #070707 88%
+            );
     }
+
+
+    .menu-hero-content {
+        width: calc(100% - 32px);
+
+        padding: 50px 0 45px;
+    }
+
 
     .menu-japanese {
-        margin-bottom: 7px;
+        font-size: 14px;
 
-        font-size: 10px;
         letter-spacing: 4px;
     }
 
-    .menu-heading h1 {
-        font-size: 32px;
-        letter-spacing: 1.5px;
-    }
 
-    .menu-heading-line {
-        width: 28px;
-        height: 3px;
-
-        margin: 10px auto;
-    }
-
-    .menu-heading p {
-        padding: 0 8px;
-
-        font-size: 10px;
-        line-height: 1.55;
+    .menu-hero h1 {
+        font-size: 62px;
     }
 
 
-    /* -------------------------
-       TABS
-    ------------------------- */
+    .menu-hero p {
+        max-width: 290px;
 
-    .menu-tabs {
-        width: 100%;
-        margin: 0 auto 22px;
-
-        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        font-size: 13px;
     }
 
-    .menu-tab {
-        min-height: 43px;
 
-        padding: 11px 4px;
+    /* CATEGORY */
 
+    .menu-categories {
+        width: calc(100% - 32px);
+
+        margin-top: -15px;
+
+        grid-template-columns: 1fr;
+
+        gap: 9px;
+    }
+
+
+    .category-card {
+        min-height: 76px;
+
+        padding: 12px 16px;
+
+        gap: 13px;
+    }
+
+
+    .category-icon {
+        width: 43px;
+        height: 43px;
+
+        font-size: 19px;
+    }
+
+
+    .category-text strong {
+        font-size: 13px;
+    }
+
+
+    .category-text small {
         font-size: 8px;
-        letter-spacing: 0.7px;
-
-        -webkit-tap-highlight-color: transparent;
-    }
-
-    .menu-tab.active {
-        border-radius: 6px 6px 0 0;
     }
 
 
-    /* -------------------------
-       MENU LIST
-    ------------------------- */
-
-    .menu-list {
-        width: 100%;
+    .category-arrow {
+        font-size: 18px;
     }
 
 
-    /* -------------------------
-       MENU ITEM
-    ------------------------- */
+    /* CONTENT */
 
-    .menu-item {
-        width: 100%;
+    .menu-content {
+        width: calc(100% - 32px);
 
-        padding: 10px 2px;
-
-        align-items: center;
+        padding: 50px 0 70px;
     }
 
 
-    /* -------------------------
-       IMAGE
-    ------------------------- */
+    .menu-section-heading {
+        display: block;
 
-    .menu-item-image {
-        width: 62px;
-        height: 62px;
-        flex: 0 0 62px;
-
-        border-width: 2px;
+        margin-bottom: 25px;
     }
 
 
-    /* -------------------------
-       CONTENT
-    ------------------------- */
-
-    .menu-item-content {
-        padding-left: 12px;
-        padding-right: 3px;
-    }
-
-    .menu-item-content h2 {
-        margin-bottom: 3px;
-
-        font-size: 12px;
-        line-height: 1.3;
-    }
-
-    .menu-item-content p {
-        max-width: none;
-
-        font-size: 9px;
-        line-height: 1.4;
-    }
-
-    .menu-price {
-        margin-top: 3px;
-
-        font-size: 11px;
-    }
-
-    .menu-badge {
-        margin-left: 4px;
-        padding: 2px 5px;
-
-        font-size: 7px;
+    .menu-section-heading h2 {
+        font-size: 48px;
     }
 
 
-    /* -------------------------
-       FOOTER
-    ------------------------- */
+    .menu-section-heading p {
+        font-size: 8px;
 
-    .menu-page + .footer {
-        width: 100%;
-        max-width: 100%;
-
-        margin: 0;
-        padding-left: 18px;
-        padding-right: 18px;
-
-        overflow: hidden;
-    }
-}
-
-
-/* =========================================
-   SMALL PHONES
-========================================= */
-
-@media (max-width: 380px) {
-
-    .menu-page {
-        padding: 45px 10px 45px;
-    }
-
-
-    /* -------------------------
-       HEADING
-    ------------------------- */
-
-    .menu-heading {
-        margin-bottom: 24px;
-    }
-
-    .menu-japanese {
-        font-size: 9px;
         letter-spacing: 3px;
     }
 
-    .menu-heading h1 {
-        font-size: 29px;
-    }
 
-    .menu-heading p {
-        padding: 0 4px;
-        font-size: 9px;
-    }
+    .menu-section-description {
+        max-width: none;
 
+        margin-top: 20px;
 
-    /* -------------------------
-       TABS
-    ------------------------- */
+        padding: 12px 15px;
 
-    .menu-tabs {
-        margin-bottom: 18px;
-    }
+        border-right: none;
 
-    .menu-tab {
-        min-height: 40px;
+        border-left: 2px solid var(--menu-red);
 
-        padding: 10px 2px;
+        text-align: left;
 
-        font-size: 7px;
-        letter-spacing: 0.5px;
-    }
-
-
-    /* -------------------------
-       ITEM
-    ------------------------- */
-
-    .menu-item {
-        padding: 9px 0;
-    }
-
-    .menu-item-image {
-        width: 56px;
-        height: 56px;
-        flex: 0 0 56px;
-    }
-
-    .menu-item-content {
-        padding-left: 10px;
-        padding-right: 2px;
-    }
-
-    .menu-item-content h2 {
         font-size: 11px;
     }
 
-    .menu-item-content p {
-        font-size: 8px;
-        line-height: 1.35;
+
+    /* GRID */
+
+    .menu-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 10px;
     }
 
-    .menu-price {
-        font-size: 10px;
+
+    .menu-card-image {
+        height: 145px;
     }
 
 
-    /* -------------------------
-       FOOTER
-    ------------------------- */
-
-    .menu-page + .footer {
-        padding-left: 12px;
-        padding-right: 12px;
-    }
-}
-
-
-/* =========================================
-   VERY SMALL PHONES
-========================================= */
-
-@media (max-width: 330px) {
-
-    .menu-page {
-        padding-left: 8px;
-        padding-right: 8px;
+    .menu-card-body {
+        padding: 12px 10px 12px;
     }
 
-    .menu-item-image {
-        width: 52px;
-        height: 52px;
-        flex-basis: 52px;
+
+    .menu-card-body h3 {
+        font-size: 12px;
     }
 
-    .menu-item-content {
-        padding-left: 9px;
-    }
 
-    .menu-item-content h2 {
-        font-size: 10px;
-    }
+    .menu-card-body p {
+        min-height: 55px;
 
-    .menu-item-content p {
-        font-size: 7.5px;
-    }
-
-    .menu-price {
         font-size: 9px;
     }
+
+
+    .menu-card-bottom {
+        margin-top: 12px;
+    }
+
+
+    .menu-card-bottom strong {
+        font-size: 14px;
+    }
+
+
+    .menu-plus {
+        width: 29px;
+        height: 29px;
+
+        font-size: 18px;
+    }
+
+
+    .best-seller {
+        top: 8px;
+        right: 8px;
+
+        padding: 5px 6px;
+
+        font-size: 7px;
+    }
+
 }
 
 
-/* =========================================
-   ACCESSIBILITY / TOUCH
-========================================= */
+/* =========================================================
+   SMALL PHONES
+========================================================= */
 
-.menu-tab:focus-visible {
-    outline: 2px solid #ed1c24;
-    outline-offset: 2px;
-}
+@media (max-width: 400px) {
 
-.menu-tab,
-.menu-item {
-    -webkit-tap-highlight-color: transparent;
+    .menu-hero h1 {
+        font-size: 55px;
+    }
+
+
+    .menu-grid {
+        gap: 8px;
+    }
+
+
+    .menu-card-image {
+        height: 125px;
+    }
+
+
+    .menu-card-body h3 {
+        font-size: 11px;
+    }
+
+
+    .menu-card-body p {
+        font-size: 8px;
+    }
+
 }
