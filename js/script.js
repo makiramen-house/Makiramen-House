@@ -181,3 +181,43 @@ if (mobileMenuToggle && mobileMenu) {
         }
     });
 }
+
+// ===============================
+// MENU CATEGORY TABS
+// ===============================
+document.addEventListener("DOMContentLoaded", () => {
+
+    const menuTabs = document.querySelectorAll(".menu-tab");
+    const menuCategories = document.querySelectorAll(".menu-category");
+
+    menuTabs.forEach(tab => {
+
+        tab.addEventListener("click", () => {
+
+            const category = tab.dataset.category;
+
+            // Remove active from all tabs
+            menuTabs.forEach(item => {
+                item.classList.remove("active");
+            });
+
+            // Remove active from all categories
+            menuCategories.forEach(section => {
+                section.classList.remove("active");
+            });
+
+            // Activate clicked tab
+            tab.classList.add("active");
+
+            // Activate matching category
+            const selectedCategory = document.getElementById(category);
+
+            if (selectedCategory) {
+                selectedCategory.classList.add("active");
+            }
+
+        });
+
+    });
+
+});

@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gallery | Makiramen House</title>
+
+    <link rel="stylesheet" href="css/style.css?v=3">
+    <link rel="stylesheet" href="css/gallery.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header class="site-header">
+    <nav class="navbar">
+
+        <a href="index.html" class="logo">
+            <span class="logo-mark">
+                <img src="images/Logo.png" alt="Makiramen Logo">
+            </span>
+            <span class="logo-name">MAKIRAMEN</span>
+        </a>
+
+        <div class="nav-links">
+            <a href="index.html">HOME</a>
+            <a href="menu.html">MENU</a>
+            <a href="about.html">ABOUT</a>
+            <a href="gallery.html" class="active">GALLERY</a>
+            <a href="location.html">LOCATION</a>
+        </div>
+
+        <a href="menu.html" class="order-btn">ORDER NOW</a>
+
+        <button
+            class="mobile-menu-toggle"
+            id="mobileMenuToggle"
+            type="button"
+            aria-label="Open menu"
+            aria-expanded="false">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+        <div class="mobile-menu" id="mobileMenu">
+
+            <button
+                class="mobile-menu-close"
+                id="mobileMenuClose"
+                type="button"
+                aria-label="Close menu">
+                ×
+            </button>
+
+            <a href="index.html" class="mobile-menu-logo">
+                <span class="logo-mark">
+                    <img src="images/Logo.png" alt="Makiramen Logo">
+                </span>
+                <span class="logo-name">MAKIRAMEN</span>
+            </a>
+
+            <div class="mobile-nav-links">
+                <a href="index.html">HOME</a>
+                <a href="menu.html">MENU</a>
+                <a href="about.html">ABOUT</a>
+                <a href="gallery.html" class="active">GALLERY</a>
+                <a href="location.html">LOCATION</a>
+            </div>
+
+            <a href="menu.html" class="mobile-order-btn">
+                ORDER NOW <span>→</span>
+            </a>
+
+        </div>
+
+    </nav>
+</header>
+
+
+<!-- =========================================================
+     GALLERY PAGE
+========================================================= -->
+
+<main class="gallery-page">
+
+    <!-- ================= PAGE INTRO ================= -->
+
+    <section class="gallery-intro">
+
+        <span class="gallery-japanese">ギャラリー</span>
+
+        <h1>GALLERY</h1>
+
+        <div class="gallery-line"></div>
+
+        <p>
+            A glimpse of Makiramen House, our food,
+            and the places we call home.
+        </p>
+
+    </section>
+
+
+    <!-- =====================================================
+         FOOD GALLERY
+    ====================================================== -->
+
+    <section class="food-gallery">
+
+        <div class="gallery-section-title">
+
+            <span>OUR FOOD</span>
+
+            <h2>
+                MADE TO BE
+                <br>
+                <strong>ENJOYED.</strong>
+            </h2>
+
+        </div>
+
+
+        <!-- FOOD FILTER -->
+
+        <div class="gallery-tabs">
+
+            <button class="gallery-tab active" data-filter="all">
+                ALL
+            </button>
+
+            <button class="gallery-tab" data-filter="ramen">
+                RAMEN
+            </button>
+
+            <button class="gallery-tab" data-filter="sushi">
+                SUSHI
+            </button>
+
+            <button class="gallery-tab" data-filter="meal">
+                MEALS
+            </button>
+
+        </div>
+
+
+        <!-- FOOD PHOTOS -->
+
+        <div class="gallery-grid">
+
+            <div class="gallery-item" data-category="ramen">
+                <img src="images/Ramen.jpg" alt="Makiramen Ramen">
+            </div>
+
+            <div class="gallery-item" data-category="ramen">
+                <img src="images/Ramen2.jpg" alt="Makiramen Ramen">
+            </div>
+
+            <div class="gallery-item" data-category="ramen">
+                <img src="images/Ramen3.jpg" alt="Makiramen Ramen">
+            </div>
+
+            <div class="gallery-item" data-category="ramen">
+                <img src="images/Ramen4.jpg" alt="Makiramen Ramen">
+            </div>
+
+            <div class="gallery-item" data-category="ramen">
+                <img src="images/Ramen5.jpg" alt="Makiramen Ramen">
+            </div>
+
+            <div class="gallery-item" data-category="sushi">
+                <img src="images/Sushi.jpg" alt="Makiramen Sushi">
+            </div>
+
+            <div class="gallery-item" data-category="sushi">
+                <img src="images/Sushi2.jpg" alt="Makiramen Sushi">
+            </div>
+
+            <div class="gallery-item" data-category="meal">
+                <img src="images/Meal.jpg" alt="Makiramen Meal">
+            </div>
+
+            <div class="gallery-item" data-category="meal">
+                <img src="images/Meal1.jpg" alt="Makiramen Meal">
+            </div>
+
+            <div class="gallery-item" data-category="meal">
+                <img src="images/Meal2.jpg" alt="Makiramen Meal">
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         BRANCHES
+    ====================================================== -->
+
+    <section class="branches-section">
+
+        <div class="branches-heading">
+
+            <span>VISIT US</span>
+
+            <h2>
+                OUR
+                <strong>BRANCHES</strong>
+            </h2>
+
+            <p>
+                Find Makiramen House near you and enjoy
+                your favorite Japanese-inspired dishes.
+            </p>
+
+        </div>
+
+<div class="branches-grid">
+
+    <!-- BALANGA CAPITOL -->
+
+    <article class="branch-card">
+
+        <div class="branch-image">
+            <img
+                src="images/Branch.jpg"
+                alt="Makiramen Balanga Capitol">
+        </div>
+
+        <div class="branch-info">
+
+            <span class="branch-number">01</span>
+
+            <h3>MAKIRAMEN BALANGA CAPITOL</h3>
+
+            <p>
+                Visit our Balanga Capitol branch
+                and enjoy your favorite dishes.
+            </p>
+
+            <a href="location.html">
+                VIEW LOCATION
+                <span>→</span>
+            </a>
+
+        </div>
+
+    </article>
+
+
+    <!-- SM BATAAN -->
+
+    <article class="branch-card">
+
+        <div class="branch-image">
+            <img
+                src="images/Branch1.jpg"
+                alt="SM Bataan">
+        </div>
+
+        <div class="branch-info">
+
+            <span class="branch-number">02</span>
+
+            <h3>SM BATAAN</h3>
+
+            <p>
+                Enjoy Makiramen favorites at
+                SM Bataan.
+            </p>
+
+            <a href="location.html">
+                VIEW LOCATION
+                <span>→</span>
+            </a>
+
+        </div>
+
+    </article>
+
+
+    <!-- SM TARLAC -->
+
+    <article class="branch-card">
+
+        <div class="branch-image">
+            <img
+                src="images/Branch.jpg"
+                alt="SM Tarlac">
+        </div>
+
+        <div class="branch-info">
+
+            <span class="branch-number">03</span>
+
+            <h3>SM TARLAC</h3>
+
+            <p>
+                Find Makiramen at SM Tarlac
+                and enjoy Japanese-inspired favorites.
+            </p>
+
+            <a href="location.html">
+                VIEW LOCATION
+                <span>→</span>
+            </a>
+
+        </div>
+
+    </article>
+
+
+    <!-- SM OLONGAPO CENTRAL -->
+
+    <article class="branch-card">
+
+        <div class="branch-image">
+            <img
+                src="images/Branch1.jpg"
+                alt="SM Olongapo Central">
+        </div>
+
+        <div class="branch-info">
+
+            <span class="branch-number">04</span>
+
+            <h3>SM OLONGAPO CENTRAL</h3>
+
+            <p>
+                Visit us at SM Olongapo Central
+                for your Makiramen favorites.
+            </p>
+
+            <a href="location.html">
+                VIEW LOCATION
+                <span>→</span>
+            </a>
+
+        </div>
+
+    </article>
+
+
+    <!-- ORANI -->
+
+    <article class="branch-card">
+
+        <div class="branch-image">
+            <img
+                src="images/Branch.jpg"
+                alt="Makiramen Orani Branch">
+        </div>
+
+        <div class="branch-info">
+
+            <span class="branch-number">05</span>
+
+            <h3>MAKIRAMEN ORANI BRANCH</h3>
+
+            <p>
+                Drop by our Orani branch and
+                enjoy your Makiramen favorites.
+            </p>
+
+            <a href="location.html">
+                VIEW LOCATION
+                <span>→</span>
+            </a>
+
+        </div>
+
+    </article>
+
+</div>
+    </section>
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="footer">
+
+    <a href="index.html" class="footer-logo">
+
+        <span class="footer-logo-mark">
+            <img src="images/Logo.png" alt="Makiramen">
+        </span>
+
+        <span class="footer-logo-name">
+            MAKIRAMEN
+        </span>
+
+    </a>
+
+    <p class="footer-credit">
+        All Rights Reserved © 2026 Makiramen House
+    </p>
+
+    <p class="footer-credit">
+        Designed & Developed by
+        <strong>Mark Darryl Lacerna</strong>
+    </p>
+
+</footer>
+
+
+<script src="js/script.js?v=3"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    const tabs = document.querySelectorAll(".gallery-tab");
+    const items = document.querySelectorAll(".gallery-item");
+
+    tabs.forEach(tab => {
+
+        tab.addEventListener("click", () => {
+
+            const filter = tab.dataset.filter;
+
+            tabs.forEach(button => {
+                button.classList.remove("active");
+            });
+
+            tab.classList.add("active");
+
+            items.forEach(item => {
+
+                if (
+                    filter === "all" ||
+                    item.dataset.category === filter
+                ) {
+                    item.classList.remove("hidden");
+                } else {
+                    item.classList.add("hidden");
+                }
+
+            });
+
+        });
+
+    });
+
+});
+</script>
+
+<!-- GALLERY LIGHTBOX -->
+<div class="gallery-lightbox" id="galleryLightbox">
+    <button class="gallery-close" id="galleryClose">&times;</button>
+
+    <button class="gallery-prev" id="galleryPrev">&#10094;</button>
+
+    <div class="gallery-viewer">
+        <img id="galleryViewerImage" src="" alt="Makiramen Gallery">
+    </div>
+
+    <button class="gallery-next" id="galleryNext">&#10095;</button>
+</div>
+
+<script>
+const galleryImages = Array.from(
+    document.querySelectorAll('.gallery-grid img')
+);
+
+const lightbox = document.getElementById('galleryLightbox');
+const viewerImage = document.getElementById('galleryViewerImage');
+const closeBtn = document.getElementById('galleryClose');
+const prevBtn = document.getElementById('galleryPrev');
+const nextBtn = document.getElementById('galleryNext');
+
+let currentGalleryIndex = 0;
+
+function openGallery(index) {
+    currentGalleryIndex = index;
+    viewerImage.src = galleryImages[index].src;
+    viewerImage.alt = galleryImages[index].alt || 'Makiramen Gallery';
+    lightbox.classList.add('active');
+    document.body.classList.add('gallery-open');
+}
+
+function closeGallery() {
+    lightbox.classList.remove('active');
+    document.body.classList.remove('gallery-open');
+}
+
+function showNext() {
+    currentGalleryIndex =
+        (currentGalleryIndex + 1) % galleryImages.length;
+
+    viewerImage.src = galleryImages[currentGalleryIndex].src;
+    viewerImage.alt =
+        galleryImages[currentGalleryIndex].alt || 'Makiramen Gallery';
+}
+
+function showPrevious() {
+    currentGalleryIndex =
+        (currentGalleryIndex - 1 + galleryImages.length) %
+        galleryImages.length;
+
+    viewerImage.src = galleryImages[currentGalleryIndex].src;
+    viewerImage.alt =
+        galleryImages[currentGalleryIndex].alt || 'Makiramen Gallery';
+}
+
+galleryImages.forEach((image, index) => {
+    image.addEventListener('click', () => {
+        openGallery(index);
+    });
+});
+
+closeBtn.addEventListener('click', closeGallery);
+nextBtn.addEventListener('click', showNext);
+prevBtn.addEventListener('click', showPrevious);
+
+lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+        closeGallery();
+    }
+});
+
+document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+
+    if (e.key === 'Escape') closeGallery();
+    if (e.key === 'ArrowRight') showNext();
+    if (e.key === 'ArrowLeft') showPrevious();
+});
+</script>
+
+</body>
+</html>

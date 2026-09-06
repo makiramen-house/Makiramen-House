@@ -2257,3 +2257,47 @@ button {
         transform: translateY(0);
     }
 }
+
+/* =========================================================
+   BRANCH LIST — LOCATION SECTION
+========================================================= */
+
+.branch-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 14px;
+}
+
+.branch-list p {
+    margin: 0;
+    color: #bdbdbd;
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+.branches-location > div {
+    min-width: 0;
+}
+
+.branches-location > div > a {
+    display: inline-block;
+    margin-top: 4px;
+}
+
+
+/* =========================================================
+   MOBILE BRANCH LIST
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .branch-list {
+        gap: 5px;
+    }
+
+    .branch-list p {
+        font-size: 13px;
+    }
+
+}
