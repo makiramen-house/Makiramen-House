@@ -6,7 +6,7 @@
 
     <title>About Us | Makiramen House</title>
 
-    <link rel="stylesheet" href="css/style.css?v=4">
+    <link rel="stylesheet" href="css/style.css?v=3">
     <link rel="stylesheet" href="css/about.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,7 +19,6 @@
 
 <body>
 
-<!-- ================= HEADER ================= -->
 <header class="site-header">
     <nav class="navbar">
 
@@ -27,58 +26,36 @@
             <span class="logo-mark">
                 <img src="images/Logo.png" alt="Makiramen Logo">
             </span>
-            <span class="logo-name">MAKIRAMEN</span>
+
+            <span class="logo-name">
+                MAKIRAMEN
+            </span>
         </a>
 
         <div class="nav-links">
             <a href="index.html">HOME</a>
             <a href="menu.html">MENU</a>
-            <a href="about.html" class="active">ABOUT</a>
+            <a href="about.html">ABOUT</a>
             <a href="gallery.html">GALLERY</a>
             <a href="location.html">LOCATION</a>
         </div>
 
         <a href="menu.html" class="order-btn">ORDER NOW</a>
 
-        <!-- MOBILE MENU TOGGLE -->
-        <button
-            class="mobile-menu-toggle"
-            id="mobileMenuToggle"
-            type="button"
-            aria-label="Open menu"
-            aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Open menu">
+            <i class="fas fa-bars"></i>
         </button>
 
-        <!-- MOBILE SIDEBAR -->
-        <div class="mobile-menu" id="mobileMenu">
-
-
-
-            <a href="index.html" class="mobile-menu-logo">
-                <span class="logo-mark">
-                    <img src="images/Logo.png" alt="Makiramen Logo">
-                </span>
-                <span class="logo-name">MAKIRAMEN</span>
-            </a>
-
-            <div class="mobile-nav-links">
-                <a href="index.html">HOME</a>
-                <a href="menu.html">MENU</a>
-                <a href="about.html" class="active">ABOUT</a>
-                <a href="gallery.html">GALLERY</a>
-                <a href="location.html">LOCATION</a>
-            </div>
-
-            <a href="menu.html" class="mobile-order-btn">
-                ORDER NOW <span>→</span>
-            </a>
-
-        </div>
-
     </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html">HOME</a>
+        <a href="menu.html">MENU</a>
+        <a href="about.html">ABOUT</a>
+        <a href="gallery.html">GALLERY</a>
+        <a href="location.html">LOCATION</a>
+        <a href="menu.html" class="mobile-order-btn">ORDER NOW</a>
+    </div>
 </header>
 
 
