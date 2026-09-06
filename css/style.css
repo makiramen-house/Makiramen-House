@@ -2301,3 +2301,73 @@ button {
     }
 
 }
+
+/* =========================================================
+   MOBILE NAVBAR — LOGO FIX
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .navbar {
+        min-height: 68px !important;
+        height: 68px !important;
+        padding: 0 16px !important;
+        box-sizing: border-box !important;
+        overflow: visible !important;
+    }
+
+    .navbar .logo {
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+
+        width: auto !important;
+        max-width: none !important;
+
+        flex-shrink: 0 !important;
+
+        overflow: visible !important;
+    }
+
+    .navbar .logo-mark {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+
+        width: 38px !important;
+        height: 38px !important;
+
+        flex-shrink: 0 !important;
+
+        overflow: visible !important;
+    }
+
+    .navbar .logo-mark img {
+        display: block !important;
+
+        width: 38px !important;
+        height: 38px !important;
+
+        max-width: none !important;
+        object-fit: contain !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .navbar .logo-name {
+        display: inline-block !important;
+
+        white-space: nowrap !important;
+
+        font-size: 18px !important;
+        line-height: 1 !important;
+
+        flex-shrink: 0 !important;
+    }
+
+    .navbar .mobile-menu-toggle {
+        flex-shrink: 0 !important;
+        margin-left: auto !important;
+    }
+}
