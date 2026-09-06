@@ -2303,4 +2303,18 @@ button {
 }
 
 
+/* =========================================
+   MOBILE HAMBURGER BARS
+========================================= */
+@media (max-width: 700px) {
 
+    .mobile-menu-toggle span {
+        display: block !important;
+        width: 24px !important;
+        height: 2px !important;
+        margin: 3px 0 !important;
+        background: #fff !important;
+        border-radius: 2px;
+    }
+
+}
