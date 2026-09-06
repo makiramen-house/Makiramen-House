@@ -174,187 +174,6 @@
     </section>
 
 
-    <!-- =====================================================
-         BRANCHES
-    ====================================================== -->
-
-    <section class="branches-section">
-
-        <div class="branches-heading">
-
-            <span>VISIT US</span>
-
-            <h2>
-                OUR
-                <strong>BRANCHES</strong>
-            </h2>
-
-            <p>
-                Find Makiramen House near you and enjoy
-                your favorite Japanese-inspired dishes.
-            </p>
-
-        </div>
-
-<div class="branches-grid">
-
-    <!-- BALANGA CAPITOL -->
-
-    <article class="branch-card">
-
-        <div class="branch-image">
-            <img
-                src="images/Branch.jpg"
-                alt="Makiramen Balanga Capitol">
-        </div>
-
-        <div class="branch-info">
-
-            <span class="branch-number">01</span>
-
-            <h3>MAKIRAMEN BALANGA CAPITOL</h3>
-
-            <p>
-                Visit our Balanga Capitol branch
-                and enjoy your favorite dishes.
-            </p>
-
-            <a href="location.html">
-                VIEW LOCATION
-                <span>→</span>
-            </a>
-
-        </div>
-
-    </article>
-
-
-    <!-- SM BATAAN -->
-
-    <article class="branch-card">
-
-        <div class="branch-image">
-            <img
-                src="images/Branch1.jpg"
-                alt="SM Bataan">
-        </div>
-
-        <div class="branch-info">
-
-            <span class="branch-number">02</span>
-
-            <h3>SM BATAAN</h3>
-
-            <p>
-                Enjoy Makiramen favorites at
-                SM Bataan.
-            </p>
-
-            <a href="location.html">
-                VIEW LOCATION
-                <span>→</span>
-            </a>
-
-        </div>
-
-    </article>
-
-
-    <!-- SM TARLAC -->
-
-    <article class="branch-card">
-
-        <div class="branch-image">
-            <img
-                src="images/Branch.jpg"
-                alt="SM Tarlac">
-        </div>
-
-        <div class="branch-info">
-
-            <span class="branch-number">03</span>
-
-            <h3>SM TARLAC</h3>
-
-            <p>
-                Find Makiramen at SM Tarlac
-                and enjoy Japanese-inspired favorites.
-            </p>
-
-            <a href="location.html">
-                VIEW LOCATION
-                <span>→</span>
-            </a>
-
-        </div>
-
-    </article>
-
-
-    <!-- SM OLONGAPO CENTRAL -->
-
-    <article class="branch-card">
-
-        <div class="branch-image">
-            <img
-                src="images/Branch1.jpg"
-                alt="SM Olongapo Central">
-        </div>
-
-        <div class="branch-info">
-
-            <span class="branch-number">04</span>
-
-            <h3>SM OLONGAPO CENTRAL</h3>
-
-            <p>
-                Visit us at SM Olongapo Central
-                for your Makiramen favorites.
-            </p>
-
-            <a href="location.html">
-                VIEW LOCATION
-                <span>→</span>
-            </a>
-
-        </div>
-
-    </article>
-
-
-    <!-- ORANI -->
-
-    <article class="branch-card">
-
-        <div class="branch-image">
-            <img
-                src="images/Branch.jpg"
-                alt="Makiramen Orani Branch">
-        </div>
-
-        <div class="branch-info">
-
-            <span class="branch-number">05</span>
-
-            <h3>MAKIRAMEN ORANI BRANCH</h3>
-
-            <p>
-                Drop by our Orani branch and
-                enjoy your Makiramen favorites.
-            </p>
-
-            <a href="location.html">
-                VIEW LOCATION
-                <span>→</span>
-            </a>
-
-        </div>
-
-    </article>
-
-</div>
-    </section>
-
 </main>
 
 <!-- =========================================================
@@ -928,6 +747,44 @@ if (lightbox) {
     );
 
 }
+
+/* =========================================================
+   GALLERY CATEGORY FILTER
+========================================================= */
+
+const galleryTabs = document.querySelectorAll('.gallery-tab');
+const galleryItems = document.querySelectorAll('.gallery-item');
+
+galleryTabs.forEach(tab => {
+
+    tab.addEventListener('click', () => {
+
+        const filter = tab.dataset.filter;
+
+        /* Active button */
+        galleryTabs.forEach(item => {
+            item.classList.remove('active');
+        });
+
+        tab.classList.add('active');
+
+
+        /* Filter photos */
+        galleryItems.forEach(item => {
+
+            const category = item.dataset.category;
+
+            if (filter === 'all' || category === filter) {
+                item.style.display = '';
+            } else {
+                item.style.display = 'none';
+            }
+
+        });
+
+    });
+
+});
 
 </script>
 </body>

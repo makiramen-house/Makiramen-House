@@ -1,0 +1,519 @@
+/* =========================================================
+   MAKIRAMEN HOUSE
+   LOCATION PAGE
+========================================================= */
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.location-page {
+    width: 100%;
+    min-height: 100vh;
+    background: #080808;
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   LOCATION HERO / HEADING
+========================================================= */
+
+.location-hero {
+    width: 100%;
+    padding: 85px 30px 70px;
+    text-align: center;
+}
+
+.location-heading {
+    width: min(900px, 100%);
+    margin: 0 auto;
+}
+
+.location-heading > span {
+    display: block;
+    margin-bottom: 14px;
+
+    color: var(--red);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 4px;
+}
+
+.location-heading h1 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(48px, 7vw, 86px);
+    font-weight: 400;
+    line-height: .95;
+    letter-spacing: 2px;
+}
+
+.location-heading h1 strong {
+    color: var(--red);
+    font-weight: 400;
+}
+
+.location-heading-line {
+    width: 70px;
+    height: 2px;
+
+    margin: 28px auto 24px;
+
+    background: var(--red);
+}
+
+.location-heading p {
+    max-width: 600px;
+    margin: 0 auto;
+
+    color: #a9a9a9;
+
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   LOCATIONS SECTION
+========================================================= */
+
+.locations-section {
+    width: min(1250px, calc(100% - 60px));
+    margin: 0 auto;
+
+    padding: 0 0 100px;
+}
+
+.locations-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 30px;
+}
+
+
+/* =========================================================
+   LOCATION CARD
+========================================================= */
+
+.location-card {
+    position: relative;
+
+    overflow: hidden;
+
+    background: #111111;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
+
+.location-card:hover {
+    transform: translateY(-6px);
+
+    border-color: rgba(196, 30, 58, 0.6);
+
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
+}
+
+
+/* =========================================================
+   CARD IMAGE
+========================================================= */
+
+.location-card-image {
+    position: relative;
+
+    width: 100%;
+    height: 300px;
+
+    overflow: hidden;
+
+    background: #151515;
+}
+
+.location-card-image::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0) 45%,
+            rgba(0, 0, 0, 0.65) 100%
+        );
+
+    pointer-events: none;
+}
+
+.location-card-image img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform .5s ease;
+}
+
+.location-card:hover .location-card-image img {
+    transform: scale(1.05);
+}
+
+
+/* =========================================================
+   CARD CONTENT
+========================================================= */
+
+.location-card-content {
+    position: relative;
+
+    padding: 30px 32px 34px;
+}
+
+.location-number {
+    display: block;
+
+    margin-bottom: 12px;
+
+    color: var(--red);
+
+    font-family: 'Anton', sans-serif;
+
+    font-size: 18px;
+    letter-spacing: 2px;
+}
+
+.location-card-content h2 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-family: 'Anton', sans-serif;
+
+    font-size: 30px;
+    font-weight: 400;
+
+    line-height: 1.05;
+    letter-spacing: 1px;
+}
+
+.location-card-content h3 {
+    margin: 6px 0 18px;
+
+    color: #bdbdbd;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+.location-address {
+    min-height: 48px;
+
+    margin: 0 0 25px;
+
+    color: #a8a8a8;
+
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   GET DIRECTIONS
+========================================================= */
+
+.location-card-content > a {
+    display: inline-flex;
+
+    align-items: center;
+    gap: 12px;
+
+    color: #ffffff;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+    text-decoration: none;
+
+    transition: color .25s ease;
+}
+
+.location-card-content > a span {
+    color: var(--red);
+
+    font-size: 18px;
+
+    transition:
+        transform .25s ease,
+        color .25s ease;
+}
+
+.location-card-content > a:hover {
+    color: var(--red);
+}
+
+.location-card-content > a:hover span {
+    transform: translateX(5px);
+}
+
+
+/* =========================================================
+   LOCATION INFO
+========================================================= */
+
+.location-info-section {
+    width: min(1250px, calc(100% - 60px));
+    margin: 0 auto;
+
+    padding: 0 0 100px;
+
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 30px;
+}
+
+.location-info-card {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 22px;
+
+    padding: 30px;
+
+    background: #111111;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.location-info-icon {
+    flex-shrink: 0;
+
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(196, 30, 58, 0.5);
+
+    color: var(--red);
+
+    font-size: 23px;
+}
+
+.location-info-card h3 {
+    margin: 0 0 10px;
+
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+.location-info-card p {
+    margin: 0 0 4px;
+
+    color: #999999;
+
+    font-size: 14px;
+}
+
+.location-info-card strong {
+    color: #ffffff;
+
+    font-size: 14px;
+}
+
+.location-info-card .contact-detail {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #bdbdbd;
+
+    font-size: 14px;
+
+    text-decoration: none;
+
+    transition: color .25s ease;
+}
+
+.location-info-card .contact-detail:hover {
+    color: var(--red);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.location-page + .footer {
+    margin-top: 0;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .location-hero {
+        padding: 70px 25px 55px;
+    }
+
+    .locations-section,
+    .location-info-section {
+        width: min(100% - 40px, 700px);
+    }
+
+    .locations-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .location-info-section {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .location-hero {
+        padding: 55px 16px 45px;
+    }
+
+    .location-heading > span {
+        margin-bottom: 12px;
+
+        font-size: 11px;
+        letter-spacing: 3px;
+    }
+
+    .location-heading h1 {
+        font-size: 48px;
+        line-height: .95;
+    }
+
+    .location-heading-line {
+        margin: 22px auto 20px;
+    }
+
+    .location-heading p {
+        padding: 0 10px;
+
+        font-size: 13px;
+        line-height: 1.7;
+    }
+
+
+    .locations-section {
+        width: calc(100% - 32px);
+
+        padding-bottom: 60px;
+    }
+
+    .locations-grid {
+        gap: 20px;
+    }
+
+
+    .location-card-image {
+        height: 230px;
+    }
+
+
+    .location-card-content {
+        padding: 25px 22px 28px;
+    }
+
+    .location-number {
+        margin-bottom: 9px;
+
+        font-size: 16px;
+    }
+
+    .location-card-content h2 {
+        font-size: 27px;
+    }
+
+    .location-card-content h3 {
+        margin-bottom: 14px;
+
+        font-size: 10px;
+        letter-spacing: 1.5px;
+    }
+
+    .location-address {
+        min-height: auto;
+
+        margin-bottom: 20px;
+
+        font-size: 13px;
+    }
+
+
+    .location-info-section {
+        width: calc(100% - 32px);
+
+        grid-template-columns: 1fr;
+
+        gap: 16px;
+
+        padding-bottom: 60px;
+    }
+
+    .location-info-card {
+        padding: 22px;
+
+        gap: 16px;
+    }
+
+    .location-info-icon {
+        width: 42px;
+        height: 42px;
+
+        font-size: 20px;
+    }
+
+    .location-info-card h3 {
+        font-size: 11px;
+    }
+
+    .location-info-card p,
+    .location-info-card strong,
+    .location-info-card .contact-detail {
+        font-size: 13px;
+    }
+
+}
